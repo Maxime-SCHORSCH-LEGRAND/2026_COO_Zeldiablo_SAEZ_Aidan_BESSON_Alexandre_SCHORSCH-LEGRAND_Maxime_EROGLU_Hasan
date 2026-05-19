@@ -16,7 +16,7 @@ adresse@etu.univ-lorraine
 ## Etat du projet
 
 Version 1:
-- TODO
+- En cour
 
 Version 0:
 - Main simple HelloWorld
