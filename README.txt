@@ -1,15 +1,14 @@
 # Projet Zeldiablo (2025-2026)
 
-## Membres du groupe
 
 Liste des membres du projet :
-- Prenom Nom adresse@etu.univ-lorraine
+- Aidan Saez aidan.saez7@etu.univ-lorraine.fr
 - Prenom Nom adresse@etu.univ-lorraine
 - Prenom Nom adresse@etu.univ-lorraine
 - Prenom Nom adresse@etu.univ-lorraine
 
 Liste des adresses mail
-adresse@etu.univ-lorraine
+aidan.saez7@etu.univ-lorraine.fr
 adresse@etu.univ-lorraine
 adresse@etu.univ-lorraine
 adresse@etu.univ-lorraine
