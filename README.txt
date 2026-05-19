@@ -3,13 +3,13 @@
 
 Liste des membres du projet :
 - Aidan Saez aidan.saez7@etu.univ-lorraine.fr
-- Prenom Nom adresse@etu.univ-lorraine
+- Besson Alexandre alexandre.besson1@etu.univ-lorraine.fr
 - Prenom Nom adresse@etu.univ-lorraine
 - Prenom Nom adresse@etu.univ-lorraine
 
 Liste des adresses mail
 aidan.saez7@etu.univ-lorraine.fr
-adresse@etu.univ-lorraine
+alexandre.besson1@etu.univ-lorraine.fr
 adresse@etu.univ-lorraine
 adresse@etu.univ-lorraine
 
