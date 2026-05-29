@@ -3,7 +3,7 @@ package main;
 import moteurJeu.MoteurGraphique;
 
 public class Jeu {
-
+/** bababoy **/
     public static void main(String[] args) throws Exception {
 
         Labyrinthe lab = new Labyrinthe("labyrinthe.txt");
