@@ -26,11 +26,22 @@ class Labyrinth{
 +etreMur(int x, int y): boolean
 }
 
+class Dessin{
+}
+
+class JeuPerso{
+}
+
+class DessinJeu{
+}
 
 Heros ..> Personnage
 Monstre ..> Personnage
 Personnage --> Jeu
 Labyrinth --> Jeu
+DessinJeu --> Jeu
+DessinJeu ..> Dessin
+Jeu ..> JeuPerso
 
 
 
