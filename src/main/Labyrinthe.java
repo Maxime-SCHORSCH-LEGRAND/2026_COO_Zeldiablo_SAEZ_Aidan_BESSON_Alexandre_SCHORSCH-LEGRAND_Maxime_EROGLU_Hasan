@@ -48,4 +48,8 @@ public class Labyrinthe {
     public Hero getHero() {
         return hero;
     }
+
+    public boolean etreFini() {
+        return !hero.estVivant();
+    }
 }

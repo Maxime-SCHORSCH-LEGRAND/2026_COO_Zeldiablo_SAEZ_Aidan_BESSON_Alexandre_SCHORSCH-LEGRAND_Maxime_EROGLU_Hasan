@@ -13,7 +13,7 @@ public class DessinPerso implements DessinJeu{
 
         Graphics g = im.getGraphics();
 
-        g.drawRect(jeu.x*50,jeu.y*50,
+        g.drawRect(jeu.rex*50,jeu.rey*50,
         50, 50);
 
     }
