@@ -3,13 +3,15 @@
 
 autonumber
 
-== Initialization ==
 
-Joueur -> Main: déplacement()
-Main --> Labyrinthe: 
 
-== Repetition ==
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Joueur -> Main: déplacement(key)
+Main -> Labyrinthe: vérification_mur()
+Labyrinthe --> Main: authentification
+alt authentification réussi
+Main -> héros: déplacer(key);
+Main <-- héros : 
+else authentification false
+Main -> Main : pas de déplacement
+end
 @enduml
