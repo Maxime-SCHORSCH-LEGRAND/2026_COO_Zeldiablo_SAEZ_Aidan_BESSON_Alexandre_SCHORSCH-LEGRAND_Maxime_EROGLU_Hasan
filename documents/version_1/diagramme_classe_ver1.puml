@@ -20,6 +20,10 @@ class Monstre{
 
 class Labyrinth{
 -murs: boolean[][]
+-soin:char="+"
+-mur:char="#"
++Labyrinth(boolean[][] m)
++etreMur(int x, int y): boolean
 }
 
 

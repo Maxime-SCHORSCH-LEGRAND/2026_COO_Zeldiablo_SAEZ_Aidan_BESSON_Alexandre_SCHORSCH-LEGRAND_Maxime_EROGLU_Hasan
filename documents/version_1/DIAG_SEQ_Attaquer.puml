@@ -2,7 +2,6 @@
 @startuml
 
 participant main
-<<<<<<< HEAD
 participant arme
 participant action
 participant personnage
@@ -28,6 +27,5 @@ main -> personnage : recevoirDegat()
 
 personnage --> main : vie : int
 
->>>>>>> b3419d0cb412e48cb8204e6438c1fb226bff576a
 
 @enduml
