@@ -27,10 +27,10 @@ class Labyrinth{
 }
 
 
-Heros -> Personnage
-Monstre -> Personnage
-Personnage -> Jeu
-Labyrinth -> Jeu
+Heros ..> Personnage
+Monstre ..> Personnage
+Personnage --> Jeu
+Labyrinth --> Jeu
 
 
 

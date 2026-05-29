@@ -28,4 +28,5 @@ main -> personnage : recevoirDegat()
 personnage --> main : vie : int
 
 
+
 @enduml
