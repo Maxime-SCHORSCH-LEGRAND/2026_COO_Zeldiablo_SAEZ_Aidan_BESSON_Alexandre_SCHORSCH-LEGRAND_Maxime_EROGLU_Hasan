@@ -48,4 +48,6 @@ public class Labyrinthe {
     public Hero getHero() {
         return hero;
     }
+
+
 }

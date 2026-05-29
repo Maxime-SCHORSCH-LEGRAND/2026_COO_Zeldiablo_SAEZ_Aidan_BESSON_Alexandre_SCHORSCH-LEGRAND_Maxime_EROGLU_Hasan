@@ -2,13 +2,13 @@ package main;
 
 import moteurJeu.MoteurGraphique;
 
-public class Jeu {
+public class MainPerso {
 
     public static void main(String[] args) throws Exception {
 
         Labyrinthe lab = new Labyrinthe("labyrinthe.txt");
 
-        LabyrintheJeu jeu = new LabyrintheJeu(lab);
+        JeuPerso jeu = new JeuPerso(lab);
 
         LabyrintheDessin dessin = new LabyrintheDessin(jeu);
 
