@@ -2,13 +2,19 @@
 @startuml
 
 participant main
+
 participant hero
+
+participant arme
+participant action
+participant personnage
 participant personnage
 
 main -> hero : attaquer((degat:int)
 hero -> personnage : recevoirDegat(degat:int)
 personnage --> hero : vie : int
 hero --> main : degat : int
+
 
 
 

@@ -6,6 +6,7 @@ class Jeu
 interface Personnage{
 +seDeplacer()
 +attaquer():int
++subirDegats():int
 }
 class Heros{
 -vie:int
@@ -18,16 +19,13 @@ class Monstre{
 }
 
 class Labyrinth{
--Case case
+-murs: boolean[][]
 }
-class Case{
--mur: boolean
-}
+
 
 Heros -> Personnage
 Monstre -> Personnage
 Personnage -> Jeu
-Case -> Labyrinth
 Labyrinth -> Jeu
 
 
