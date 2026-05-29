@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class Jeu {
 
     public static void main(String[] args) throws Exception {
-
+         boolean t = true ;
         Labyrinthe laby =
                 new Labyrinthe("labyrinthe.txt");
 
         Scanner sc = new Scanner(System.in);
 
-        while(laby.hero.estVivant()) {
+        while(t==true ) {
 
             laby.afficher();
 
@@ -54,11 +54,5 @@ public class Jeu {
 
 
         }
-
-        if(laby.hero.estVivant()) {
-            System.out.println("Victoire !");
-        }else {
-            System.out.println("Défaite !");
-        }
-    }
+            }
 }

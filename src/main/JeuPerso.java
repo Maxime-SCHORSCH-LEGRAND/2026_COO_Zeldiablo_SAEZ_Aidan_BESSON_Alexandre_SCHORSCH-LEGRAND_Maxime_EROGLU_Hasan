@@ -1,5 +1,6 @@
 package main;
 
+import moteurJeu.Commande;
 import moteurJeu.Jeu;
 
 public class JeuPerso implements Jeu {
@@ -16,5 +17,10 @@ public class JeuPerso implements Jeu {
             y++;
         if(c.bas)
             y--;
+    }
+
+    @Override
+    public boolean etreFini() {
+        return false;
     }
 }
