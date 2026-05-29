@@ -3,9 +3,14 @@
 
 class Jeu
 
-interface Personnage{
+abstract Personnage{
+#pos : Position
+
+  Position getPos()
+
 }
-class Heros{
+class Hero{
+Hero
 }
 class Monstre{
 }
