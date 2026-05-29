@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 package moteurJeu;
 
 import main.JeuPerso;
@@ -20,4 +19,4 @@ public class DessinPerso implements DessinJeu{
     }
     
 }
->>>>>>> 2499ab211164799cb81aea65c642a0350e7c9795
+
