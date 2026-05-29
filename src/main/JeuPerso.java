@@ -19,7 +19,7 @@ public class JeuPerso implements Jeu {
             y--;
     }
 
-    @Override
+
     public boolean etreFini() {
         return false;
     }
