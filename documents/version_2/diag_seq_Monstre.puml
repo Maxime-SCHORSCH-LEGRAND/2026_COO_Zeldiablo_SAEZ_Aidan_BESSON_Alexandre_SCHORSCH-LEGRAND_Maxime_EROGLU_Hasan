@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+@startuml
+autonumber
+
+Main -> JeuPerso: initialisation()
+JeuPerso -> Labyrinthe: creation()
+
+
+JeuPerso -> Labyrinthe: generer_coordonnees_aleatoires()
+Labyrinthe --> JeuPerso: x, y
+
+JeuPerso -> Labyrinthe: verification_case_vide(x, y)
+Labyrinthe --> JeuPerso: validation
+
+alt validation == true
+    JeuPerso -> Monstre: new Monstre(x, y)
+    JeuPerso <-- Monstre:
+    JeuPerso -> JeuPerso: definir_monstre()
+else validation == false
+    JeuPerso -> JeuPerso: relancer_recherche_case()
+end
+
+@enduml

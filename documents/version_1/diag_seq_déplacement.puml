@@ -4,14 +4,19 @@
 autonumber
 
 
+@startuml
+autonumber
 
-Joueur -> Main: déplacement(key)
-Main -> Labyrinthe: vérification_mur()
-Labyrinthe --> Main: authentification
-alt authentification réussi
-Main -> héros: déplacer(key);
-Main <-- héros :
-else authentification false
-Main -> Main : pas de déplacement
-end
+Main -> JeuPerso: initialisation()
+JeuPerso -> Labyrinthe: creation()
+
+
+JeuPerso -> Labyrinthe: getCoordonneesVides()
+Labyrinthe --> JeuPerso: x, y
+
+
+JeuPerso -> Monstre: new Monstre(x, y)
+JeuPerso <-- Monstre:
+JeuPerso -> JeuPerso: definir_monstre()
+
 @enduml

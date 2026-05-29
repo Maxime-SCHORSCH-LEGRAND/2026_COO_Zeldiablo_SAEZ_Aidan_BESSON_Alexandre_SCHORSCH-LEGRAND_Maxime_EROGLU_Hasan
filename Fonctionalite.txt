@@ -28,3 +28,11 @@ Fonctionnalités version 1
 - critères de validation :il faut que le personnage se deplace de plus d'une case a la fois
 - critère 1 [le personnage ne passe pas a travers les monstres ni les murs]
 - critère 2 [le personnage fait plus que un deplacement . ]
+
+
+- fonctionnalité 5 : Génération de monstres immobiles   
+responsable : Eroglu Hasan
+descriptif texte : Au lancement, le jeu ajoute des monstres immobiles sur le plateau.  
+critères de validation : Apparition correcte des monstres.
+critère 1 : Les monstres sont créés sur des cases vides, jamais sur des murs ou sur le joueur. 
+critère 2 : Ils apparaissent sous la forme d'un cercle rou
