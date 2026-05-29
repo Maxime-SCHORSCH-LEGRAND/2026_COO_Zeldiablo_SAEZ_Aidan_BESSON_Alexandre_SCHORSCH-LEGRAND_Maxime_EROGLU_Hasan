@@ -4,36 +4,47 @@
 class Jeu
 
 abstract Personnage{
-#pos : Position
-
-  Position getPos()
-
+#pos: Position
+Position getPos()
 }
 class Hero{
-+ Hero()
-}
-class Monstre{
+-pos: Position
++Hero()
++getPos(): Postion
++deplacer()
 }
 
 class Labyrinth{
-
+-grille: char[][]
+-hero:Hero
++Labyrinth(String fichier)
++estLibre(int x, int y): boolean
++getGrille(): char[][]
++getHero(): Hero
++
+}
+class LabyrinthJeu{
+}
+class LabyrinthDessin{
 }
 
-class DessinPerso{
-}
 class DessinJeu{
 }
-
+class DessinPerso{
+-jeu: JeuPerso
++dessiner(BufferedImage im)
++getJeu(): JeuPerso
+}
 class JeuPerso{
 }
 
 Hero ..> Personnage
-Monstre ..> Personnage
 Personnage --> Jeu
 Labyrinth --> Jeu
 Jeu ..> JeuPerso
-DessinPerso..>DessinJeu
 DessinJeu-->Jeu
+LabyrinthJeu..>Jeu
+LabyrinthDessin..>DessinJeu
 
 
 @enduml

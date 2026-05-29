@@ -7,7 +7,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class DessinPerso implements DessinJeu{
-    JeuPerso jeu;
+
+    private JeuPerso jeu;
 
     public void  dessiner(BufferedImage im){
 
@@ -16,6 +17,10 @@ public class DessinPerso implements DessinJeu{
         g.drawRect(jeu.rex*50,jeu.rey*50,
         50, 50);
 
+    }
+
+    public JeuPerso getJeu(){
+        return this.jeu;
     }
     
 }
