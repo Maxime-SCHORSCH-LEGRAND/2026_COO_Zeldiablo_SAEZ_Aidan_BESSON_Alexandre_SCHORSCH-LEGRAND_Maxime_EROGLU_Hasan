@@ -49,7 +49,5 @@ public class Labyrinthe {
         return hero;
     }
 
-    public boolean etreFini() {
-        return !hero.estVivant();
-    }
+
 }

@@ -23,7 +23,7 @@ class Labyrinth{
 +getHero(): Hero
 +
 }
-class LabyrinthJeu{
+class JeuPerso{
 }
 class LabyrinthDessin{
 }
@@ -39,11 +39,11 @@ class JeuPerso{
 }
 
 Hero ..> Personnage
-Personnage --> Jeu
-Labyrinth --> Jeu
+Personnage --> MainPerso
+Labyrinth --> MainPerso
 Jeu ..> JeuPerso
-DessinJeu-->Jeu
-LabyrinthJeu..>Jeu
+DessinJeu-->MainPerso
+JeuPerso..>MainPerso
 LabyrinthDessin..>DessinJeu
 
 

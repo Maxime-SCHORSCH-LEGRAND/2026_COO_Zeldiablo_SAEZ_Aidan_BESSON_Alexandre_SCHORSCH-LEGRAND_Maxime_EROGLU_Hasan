@@ -18,5 +18,5 @@ public abstract class Personnage {
         return pos;
     }
 
-    public boolean estVivant(){return }
+
 }
