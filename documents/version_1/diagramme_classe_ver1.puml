@@ -10,7 +10,7 @@ abstract Personnage{
 
 }
 class Hero{
-Hero
++ Hero()
 }
 class Monstre{
 }
@@ -27,7 +27,7 @@ class DessinJeu{
 class JeuPerso{
 }
 
-Heros ..> Personnage
+Hero ..> Personnage
 Monstre ..> Personnage
 Personnage --> Jeu
 Labyrinth --> Jeu
