@@ -8,9 +8,15 @@ interface Jeu{
 +etreFini(): boolean
 }
 
+class Monstre{
+}
+
 abstract Personnage{
 #pos: Position
-Position getPos()
+#vie: int
++Personnage(int x, int y, int vie)
++getPos(): Position
++getVie(): int
 }
 
 class Hero{
@@ -53,7 +59,8 @@ class JeuPerso{
 +getY(): y
 }
 
-Hero ..> Personnage
+Hero --> Personnage
+Monstre--> Personnage
 Personnage --> MainPerso
 Labyrinthe --> MainPerso
 
