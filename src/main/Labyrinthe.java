@@ -8,7 +8,7 @@ public class Labyrinthe {
     private char[][] grille;
 
     public Hero hero;
-    public Monstre monstre;
+
 
     public Labyrinthe(String fichier) throws IOException {
 
@@ -36,12 +36,7 @@ public class Labyrinthe {
                     hero = new Hero(x,y);
                     grille[y][x] = '.';
                 }
-
-                if(c == 'M') {
-                    monstre = new Monstre(x,y);
-                    grille[y][x] = '.';
-                }
-            }
+                            }
         }
     }
 
@@ -60,11 +55,6 @@ public class Labyrinthe {
                         hero.getPos().y == y)
                     System.out.print("H");
 
-                else if(monstre.estVivant() &&
-                        monstre.getPos().x == x &&
-                        monstre.getPos().y == y)
-                    System.out.print("M");
-
                 else
                     System.out.print(grille[y][x]);
             }
@@ -74,10 +64,6 @@ public class Labyrinthe {
 
         System.out.println(
                 "Vie héros : " + hero.getVie()
-        );
-
-        System.out.println(
-                "Vie monstre : " + monstre.getVie()
         );
     }
 }

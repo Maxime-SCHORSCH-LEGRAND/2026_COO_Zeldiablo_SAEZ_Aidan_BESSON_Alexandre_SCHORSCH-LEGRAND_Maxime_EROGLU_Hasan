@@ -2,7 +2,7 @@ package main;
 
 import java.util.Scanner;
 
-public class Main {
+public class Jeu {
 
     public static void main(String[] args) throws Exception {
 
@@ -11,8 +11,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        while(laby.hero.estVivant() &&
-                laby.monstre.estVivant()) {
+        while(laby.hero.estVivant()) {
 
             laby.afficher();
 
@@ -43,9 +42,7 @@ public class Main {
                     nx++;
                     break;
 
-                case 'a':
-                    laby.hero.attaquer(laby.monstre);
-                    break;
+
             }
 
             if(c!='a' &&
@@ -55,10 +52,7 @@ public class Main {
                 laby.hero.getPos().y = ny;
             }
 
-            if(laby.monstre.estVivant()) {
-                laby.monstre.deplacer(laby.getGrille());
-                laby.monstre.attaquer(laby.hero);
-            }
+
         }
 
         if(laby.hero.estVivant()) {
