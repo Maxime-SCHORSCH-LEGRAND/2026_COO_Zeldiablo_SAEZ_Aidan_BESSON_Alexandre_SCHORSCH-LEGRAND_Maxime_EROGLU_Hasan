@@ -1,12 +1,15 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class Jeu
+class MainPerso
+
+interface Jeu
 
 abstract Personnage{
 #pos: Position
 Position getPos()
 }
+
 class Hero{
 -pos: Position
 +Hero()
@@ -23,28 +26,32 @@ class Labyrinth{
 +getHero(): Hero
 +
 }
-class LabyrinthJeu{
-}
+
 class LabyrinthDessin{
+-jeu: PersoJeu
 }
 
-class DessinJeu{
+interface DessinJeu{
++dessiner((BufferedImage im)
 }
+
 class DessinPerso{
 -jeu: JeuPerso
 +dessiner(BufferedImage im)
 +getJeu(): JeuPerso
 }
+
 class JeuPerso{
 }
 
 Hero ..> Personnage
-Personnage --> Jeu
-Labyrinth --> Jeu
-Jeu ..> JeuPerso
-DessinJeu-->Jeu
-LabyrinthJeu..>Jeu
+Personnage --> MainPerso
+Labyrinth --> MainPerso
+MainPerso ..> JeuPerso
+DessinPerso..>DessinJeu
 LabyrinthDessin..>DessinJeu
+JeuPerso--> Jeu
+JeuPerso..>Jeu
 
 
 @enduml

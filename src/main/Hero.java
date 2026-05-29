@@ -3,8 +3,7 @@ package main;
 public class Hero extends Personnage{
 
     private Position pos;
-    public int degat=5;
-    int d;
+    public int degat;
     public int vie ;
 
     public Hero(int x, int y , int vie ) {
@@ -19,7 +18,7 @@ public class Hero extends Personnage{
         pos.x = x;
         pos.y = y;
 
-        void attaquer(int degat){
+        void attaquer(int d){
             this.degat=d;
         }
     }
