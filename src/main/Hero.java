@@ -1,9 +1,6 @@
-<<<<<<< HEAD
+
 public class Hero {
 
-
-
-=======
 package main;
 
 public class Hero extends Personnage {
@@ -22,5 +19,4 @@ public class Hero extends Personnage {
             System.out.println("Le héros attaque !");
         }
     }
->>>>>>> fe8e1875f976b58b7431dc207cde4be5956aca3a
 }
