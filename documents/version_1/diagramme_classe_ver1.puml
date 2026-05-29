@@ -26,12 +26,12 @@ class Labyrinth{
 +getHero(): Hero
 +
 }
-<<<<<<< HEAD
 
-=======
+
+
 class JeuPerso{
 }
->>>>>>> 09a945e7b4acf198f815cc97fc0ce90bc4d076c0
+
 class LabyrinthDessin{
 -jeu: PersoJeu
 }
@@ -40,29 +40,18 @@ interface DessinJeu{
 +dessiner((BufferedImage im)
 }
 
-class DessinPerso{
--jeu: JeuPerso
-+dessiner(BufferedImage im)
-+getJeu(): JeuPerso
-}
-
 class JeuPerso{
 }
 
 Hero ..> Personnage
 Personnage --> MainPerso
 Labyrinth --> MainPerso
-<<<<<<< HEAD
-MainPerso ..> JeuPerso
-DessinPerso..>DessinJeu
-=======
-Jeu ..> JeuPerso
-DessinJeu-->MainPerso
+
+Jeu --> JeuPerso
+LabyrinthDessin-->MainPerso
 JeuPerso..>MainPerso
->>>>>>> 09a945e7b4acf198f815cc97fc0ce90bc4d076c0
+
 LabyrinthDessin..>DessinJeu
-JeuPerso--> Jeu
-JeuPerso..>Jeu
 
 
 @enduml
