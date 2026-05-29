@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Labyrinthe {
 
-    private char[][] grille;
+    private final char[][] grille;
     private Hero hero;
 
     public Labyrinthe(String fichier) throws IOException {
