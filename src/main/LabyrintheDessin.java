@@ -10,9 +10,9 @@ public class LabyrintheDessin implements DessinJeu {
 
     public static final int TAILLE = 20;
 
-    private LabyrintheJeu jeu;
+    private JeuPerso jeu;
 
-    public LabyrintheDessin(LabyrintheJeu j) {
+    public LabyrintheDessin(JeuPerso j) {
         this.jeu = j;
     }
 
