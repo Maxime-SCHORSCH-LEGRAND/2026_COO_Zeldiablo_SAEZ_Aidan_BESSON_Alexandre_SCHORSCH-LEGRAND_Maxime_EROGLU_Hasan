@@ -20,8 +20,7 @@ public class Main {
                     "ZQSD pour bouger, A pour attaquer"
             );
 
-            char c =
-                    sc.nextLine().toLowerCase().charAt(0);
+            char c = sc.nextLine().toLowerCase().charAt(0);
 
             int nx = laby.hero.getPos().x;
             int ny = laby.hero.getPos().y;
@@ -57,18 +56,15 @@ public class Main {
             }
 
             if(laby.monstre.estVivant()) {
-                laby.monstre.deplacer(
-                        laby.getGrille()
-                );
-                laby.monstre.attaquer(
-                        laby.hero
-                );
+                laby.monstre.deplacer(laby.getGrille());
+                laby.monstre.attaquer(laby.hero);
             }
         }
 
-        if(laby.hero.estVivant())
+        if(laby.hero.estVivant()) {
             System.out.println("Victoire !");
-        else
+        }else {
             System.out.println("Défaite !");
+        }
     }
 }
