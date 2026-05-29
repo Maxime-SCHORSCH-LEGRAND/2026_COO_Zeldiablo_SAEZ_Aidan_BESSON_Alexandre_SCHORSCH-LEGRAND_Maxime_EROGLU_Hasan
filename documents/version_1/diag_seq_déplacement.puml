@@ -10,7 +10,7 @@ Main -> Labyrinthe: vérification_mur()
 Labyrinthe --> Main: authentification
 alt authentification réussi
 Main -> héros: déplacer(key);
-Main <-- héros : 
+Main <-- héros :
 else authentification false
 Main -> Main : pas de déplacement
 end
