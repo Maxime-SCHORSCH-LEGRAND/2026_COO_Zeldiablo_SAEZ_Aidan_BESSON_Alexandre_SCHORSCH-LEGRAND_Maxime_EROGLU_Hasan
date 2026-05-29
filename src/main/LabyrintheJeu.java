@@ -27,6 +27,9 @@ public class LabyrintheJeu implements Jeu {
         if (labyrinthe.estLibre(nx, ny)) {
             hero.deplacer(nx, ny);
         }
+        if (c.espace) {
+            hero.attaquer(this);
+        }
     }
 
 

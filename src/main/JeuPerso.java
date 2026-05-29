@@ -20,6 +20,7 @@ public class JeuPerso implements Jeu {
     }
 
 
+
     public boolean etreFini() {
         return false;
     }
