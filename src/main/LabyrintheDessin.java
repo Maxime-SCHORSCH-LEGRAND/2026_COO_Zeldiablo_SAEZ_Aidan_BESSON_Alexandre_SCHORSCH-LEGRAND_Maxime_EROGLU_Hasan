@@ -16,28 +16,37 @@ public class LabyrintheDessin implements DessinJeu {
         this.jeu = j;
     }
 
-
+    @Override
     public void dessiner(BufferedImage image) {
 
         Graphics2D g = (Graphics2D) image.getGraphics();
 
         char[][] grille = jeu.getLabyrinthe().getGrille();
 
+        // Fond noir
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
 
+        // Dessin du labyrinthe
         for (int y = 0; y < grille.length; y++) {
             for (int x = 0; x < grille[y].length; x++) {
 
-                if (grille[y][x] == '#')
+                if (grille[y][x] == '#') {
                     g.setColor(Color.GRAY);
-                else
+                } else {
                     g.setColor(Color.WHITE);
+                }
 
-                g.fillRect(x * TAILLE, y * TAILLE, TAILLE, TAILLE);
+                g.fillRect(
+                        x * TAILLE,
+                        y * TAILLE,
+                        TAILLE,
+                        TAILLE
+                );
             }
         }
 
+        // Dessin du héros
         Hero h = jeu.getHero();
 
         g.setColor(Color.BLUE);
@@ -46,6 +55,14 @@ public class LabyrintheDessin implements DessinJeu {
                 h.getPos().y * TAILLE,
                 TAILLE,
                 TAILLE
+        );
+
+
+        g.setColor(Color.RED);
+        g.drawString(
+                "PV : " + h.getVie(),
+                10,
+                20
         );
 
         g.dispose();
