@@ -2,9 +2,12 @@
 @startuml
 
 participant main
+<<<<<<< HEAD
 
 participant hero
 
+=======
+>>>>>>> f8305f07738811cdae8aeab631ed13305c71873d
 participant arme
 participant action
 participant personnage
