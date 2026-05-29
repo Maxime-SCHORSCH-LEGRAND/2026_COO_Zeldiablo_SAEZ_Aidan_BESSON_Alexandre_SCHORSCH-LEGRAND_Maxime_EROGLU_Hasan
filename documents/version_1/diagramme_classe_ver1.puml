@@ -14,7 +14,7 @@ class Labyrinth{
 
 }
 
-class Dessin{
+class DessinPerso{
 }
 class DessinJeu{
 }
@@ -26,10 +26,9 @@ Heros ..> Personnage
 Monstre ..> Personnage
 Personnage --> Jeu
 Labyrinth --> Jeu
-DessinJeu --> Jeu
-DessinJeu ..> Dessin
 Jeu ..> JeuPerso
-
+DessinPerso..>DessinJeu
+DessinJeu-->Jeu
 
 
 @enduml
