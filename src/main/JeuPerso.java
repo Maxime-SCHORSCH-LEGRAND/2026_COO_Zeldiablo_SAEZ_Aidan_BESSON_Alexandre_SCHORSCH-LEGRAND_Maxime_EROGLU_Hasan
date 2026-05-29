@@ -5,8 +5,8 @@ import moteurJeu.Jeu;
 
 public class JeuPerso implements Jeu {
 
-     public int x=1;
-    public int y=1;
+    private int x=1;
+    private int y=1;
 
     public void evoluer(Commande c){
         if(c.gauche)
@@ -22,5 +22,13 @@ public class JeuPerso implements Jeu {
     @Override
     public boolean etreFini() {
         return false;
+    }
+
+    public int getX(){
+        return this.x;
+    }
+
+    public int getY(){
+        return this.y;
     }
 }
