@@ -13,7 +13,7 @@ aidan.saez7@etu.univ-lorraine.fr
 alexandre.besson1@etu.univ-lorraine.fr
 maxime.schorsch-legrand3@etu.univ-lorraine.fr
 hasan.eroglu1@etu.univ-lorraine.fr
-adresse@etu.univ-lorraine
+
 
 ## Etat du projet
 

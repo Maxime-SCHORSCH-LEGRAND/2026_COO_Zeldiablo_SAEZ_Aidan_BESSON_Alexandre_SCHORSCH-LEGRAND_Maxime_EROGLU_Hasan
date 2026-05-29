@@ -1,19 +1,29 @@
 Fonctionnalités version 1
+
+
 - fonctionnalité 1 : deplacer
+-responsable : Maxime SCHORSCH-LEGRAND
 - descriptif texte : [on se deplace]
 - critères de validation :axe y axe y modifié
 - critère 1 [limité par les murs]
 - critère 2 [mouvement du personnage]
+
+
 - fonctionnalité 2 : attaquer
+- responsable : Alexandre Besson 
 - descriptif texte : [inflige des dégats]
 - critères de validation :perte de point de vie du personnage qui subit l'attaque
 - critère 1 [perte de point de vie]
+
 - fonctionnalité 3 : soigné
+- responsable : Aidan Saez 
 - descriptif texte : [soigne les personnage]
 - critères de validation : les pv remonte et sont au maximum
 - critère 1 [redonne des pv]
 - critère 2 [ne redonne pas des pv si on est au maximum]
+
 - fonctionnalité 4 : dash
+- responsable : Eroglu Hasan 
 - descriptif texte : [le personnage se deplace d'un coup de 2 a 3 case vide]
 - critères de validation :il faut que le personnage se deplace de plus d'une case a la fois
 - critère 1 [le personnage ne passe pas a travers les monstres ni les murs]
