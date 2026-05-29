@@ -1,12 +1,11 @@
 package main;
 
-public class Hero extends Personnage{
+public class Hero {
 
     private Position pos;
-    public int vie ;
 
-    public Hero(int x, int y , int vie ) {
-        super(x,y,vie);
+    public Hero(int x, int y) {
+        pos = new Position(x, y);
     }
 
     public Position getPos() {
