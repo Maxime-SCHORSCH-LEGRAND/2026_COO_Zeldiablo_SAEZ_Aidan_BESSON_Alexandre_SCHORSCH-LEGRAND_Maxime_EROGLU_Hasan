@@ -4,33 +4,31 @@
 class Jeu
 
 interface Personnage{
-+seDeplacer()
-+attaquer():int
-+subirDegats():int
 }
 class Heros{
--vie:int
-+attaquer()
-+seSoigner()
 }
 class Monstre{
--vie:int
-+attaquer()
 }
 
 class Labyrinth{
--murs: boolean[][]
--soin:char="+"
--mur:char="#"
-+Labyrinth(boolean[][] m)
-+etreMur(int x, int y): boolean
+
 }
 
+class Dessin{
+}
+class DessinJeu{
+}
 
-Heros -> Personnage
-Monstre -> Personnage
-Personnage -> Jeu
-Labyrinth -> Jeu
+class JeuPerso{
+}
+
+Heros ..> Personnage
+Monstre ..> Personnage
+Personnage --> Jeu
+Labyrinth --> Jeu
+DessinJeu --> Jeu
+DessinJeu ..> Dessin
+Jeu ..> JeuPerso
 
 
 
