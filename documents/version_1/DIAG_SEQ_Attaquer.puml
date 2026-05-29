@@ -1,0 +1,21 @@
+'https://plantuml.com/sequence-diagram
+@startuml
+
+participant main
+participant arme
+participant action
+participant personnage
+
+main -> arme : getDegatArme()
+
+arme -> action : attaquer()
+
+action -> personnage : recevoirDegat()
+
+personnage --> action : vie : int
+
+action --> arme : degat : int
+
+arme --> main
+
+@enduml
