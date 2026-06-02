@@ -1,6 +1,7 @@
 package main;
 
 public class Hero extends Personnage {
+
     private int degat = 5;
 
     public Hero(int x, int y, int vie) {
@@ -13,14 +14,20 @@ public class Hero extends Personnage {
     }
 
     public void attaquer(Monstre monstre, int dx, int dy) {
-        if (monstre == null || !monstre.estVivant()) return;
+
+        if (monstre == null || !monstre.estVivant()) {
+            return;
+        }
 
         int tx = pos.x + dx;
         int ty = pos.y + dy;
 
-        if (monstre.getPos().x == tx && monstre.getPos().y == ty) {
-            monstre.subirDegats(this.degat); // Utilisation de la variable de la classe
+        if (monstre.getPos().x == tx &&
+                monstre.getPos().y == ty) {
+
+            monstre.subirDegats(5);
             System.out.println("Touché ! Vie monstre : " + monstre.getVie());
+
         } else {
             System.out.println("Attaque ratée !");
         }
@@ -61,5 +68,4 @@ public class Hero extends Personnage {
             this.deplacer(caseSuivanteX, caseSuivanteY);
         }
     }
-
 }

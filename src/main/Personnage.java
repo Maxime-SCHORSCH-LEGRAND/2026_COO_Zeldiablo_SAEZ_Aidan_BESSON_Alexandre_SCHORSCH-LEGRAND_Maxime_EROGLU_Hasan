@@ -14,13 +14,19 @@ public abstract class Personnage {
         return pos;
     }
 
-    public int getVie() { return vie; }
+    public int getVie() {
+        return vie;
+    }
 
+    public void subirdegat(int d){
+        this.vie -= d;
+        if (this.vie < 0) {
+            this.vie = 0;
+        }
+    }
     public boolean estVivant() {
         return vie > 0;
     }
 
-    public void subirDegats(int degats) {
-        this.vie = Math.max(0, this.vie - degats); // Plus propre qu'un if
-    }
+
 }
