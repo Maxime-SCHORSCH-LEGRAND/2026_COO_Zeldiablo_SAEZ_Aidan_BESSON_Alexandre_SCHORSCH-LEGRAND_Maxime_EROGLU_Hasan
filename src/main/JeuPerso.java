@@ -7,6 +7,7 @@ public class JeuPerso implements Jeu {
 
     private Labyrinthe labyrinthe;
     private Hero hero;
+    private Monstre monstre;
 
 
     public JeuPerso(Labyrinthe labyrinthe) {
@@ -55,7 +56,7 @@ public class JeuPerso implements Jeu {
     public int getY(){
         return this.y;
     }
-
+    public Monstre getMonstre(){return monstre;}
 }
 
 
