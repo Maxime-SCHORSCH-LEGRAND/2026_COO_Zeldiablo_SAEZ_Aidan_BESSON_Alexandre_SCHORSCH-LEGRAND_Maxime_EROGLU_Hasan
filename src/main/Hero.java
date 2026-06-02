@@ -13,8 +13,11 @@ public class Hero extends Personnage {
         pos.y = y;
     }
 
-    public void perdreVie(int d) {
+    public void subirdegat(int d) {
         vie -= d;
         if (vie < 0) vie = 0;
+    }
+    public int getDegat() {
+        return this.degat;
     }
 }

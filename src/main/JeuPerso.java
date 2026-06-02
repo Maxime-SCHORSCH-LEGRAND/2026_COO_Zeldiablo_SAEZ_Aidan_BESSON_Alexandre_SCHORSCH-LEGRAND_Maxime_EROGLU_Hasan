@@ -4,7 +4,7 @@ import moteurJeu.Commande;
 import moteurJeu.Jeu;
 
 public class JeuPerso implements Jeu {
-
+    private int direction;
     private Labyrinthe labyrinthe;
     private Hero hero;
     private Monstre monstre;
@@ -25,17 +25,34 @@ public class JeuPerso implements Jeu {
         int nx = hero.getPos().x;
         int ny = hero.getPos().y;
 
-        if (c.gauche) nx--;
-        if (c.droite) nx++;
-        if (c.haut) ny--;
-        if (c.bas) ny++;
+        if (c.gauche) { nx--; direction = 1; }
+        if (c.droite) { nx++; direction = 2; }
+        if (c.haut)   { ny--; direction = 3; }
+        if (c.bas)    { ny++; direction = 4; }
 
         if (labyrinthe.estLibre(nx, ny)) {
             hero.deplacer(nx, ny);
         }
     }
 
+    private void attaquer() {
+        int cibleX = hero.getPos().x;
+        int cibleY = hero.getPos().y;
 
+        switch (direction) {
+            case 1: cibleX--; break;
+            case 2: cibleX++; break;
+            case 3: cibleY--; break;
+            case 4: cibleY++; break;
+        }
+
+        for (Monstre monstre : labyrinthe.getMonstres()) {
+            if (monstre.getPos().x == cibleX && monstre.getPos().y == cibleY) {
+                monstre.subirdegat(hero.getDegat());
+                break;
+            }
+        }
+    }
 
     public boolean etreFini() {
         return false;
