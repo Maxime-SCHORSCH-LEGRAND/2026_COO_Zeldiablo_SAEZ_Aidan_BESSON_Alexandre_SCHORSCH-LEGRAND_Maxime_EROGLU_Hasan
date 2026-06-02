@@ -9,6 +9,12 @@ interface Jeu{
 }
 
 class Monstre{
+-pos: Position
++Monstre()
++getPos(): Postion
++deplacer()
++attaquer(int a)
++subirDegtat(int d)
 }
 
 abstract Personnage{
@@ -17,6 +23,8 @@ abstract Personnage{
 +Personnage(int x, int y, int vie)
 +getPos(): Position
 +getVie(): int
++attaquer(int a)
+subirDegtat(int d)
 }
 
 class Hero{
@@ -24,6 +32,8 @@ class Hero{
 +Hero()
 +getPos(): Postion
 +deplacer()
++attaquer(int a)
++subirDegtat(int d)
 }
 
 class Labyrinthe{
