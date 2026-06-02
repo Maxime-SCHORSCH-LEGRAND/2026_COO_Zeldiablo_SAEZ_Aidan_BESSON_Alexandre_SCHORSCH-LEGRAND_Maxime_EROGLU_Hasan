@@ -1,7 +1,5 @@
 package main;
 
-import main.Hero;
-
 import java.io.*;
 import java.util.*;
 
@@ -22,6 +20,7 @@ public class Labyrinthe {
         while ((ligne = br.readLine()) != null) {
             lignes.add(ligne);
         }
+        br.close();
 
         grille = new char[lignes.size()][lignes.get(0).length()];
 
@@ -32,7 +31,7 @@ public class Labyrinthe {
                 grille[y][x] = c;
 
                 if (c == 'H') {
-                    hero = new Hero(x, y,20);
+                    hero = new Hero(x, y, 20);
                     grille[y][x] = '.';
                 }
 
@@ -55,8 +54,8 @@ public class Labyrinthe {
     public Hero getHero() {
         return hero;
     }
-    public Monstre getMonstre(){return monstre;}
 
-
-
+    public Monstre getMonstre() {
+        return monstre;
+    }
 }
