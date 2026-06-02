@@ -10,4 +10,11 @@ public class Monstre extends Personnage{
         return pos;
     }
 
+    public void subirdegat(int degat) {
+        this.vie = this.vie - degat;
+        if (this.vie < 0) {
+            this.vie = 0; 
+        }
+    }
+
 }
