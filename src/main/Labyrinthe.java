@@ -55,6 +55,7 @@ public class Labyrinthe {
     public Hero getHero() {
         return hero;
     }
+    public Monstre getMonstre(){return monstre;}
 
 
 

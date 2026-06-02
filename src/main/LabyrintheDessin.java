@@ -16,7 +16,7 @@ public class LabyrintheDessin implements DessinJeu {
         this.jeu = j;
     }
 
-    @Override
+
     public void dessiner(BufferedImage image) {
 
         Graphics2D g = (Graphics2D) image.getGraphics();
@@ -53,6 +53,24 @@ public class LabyrintheDessin implements DessinJeu {
         g.fillOval(
                 h.getPos().x * TAILLE,
                 h.getPos().y * TAILLE,
+                TAILLE,
+                TAILLE
+        );
+
+
+        g.setColor(Color.LIGHT_GRAY);
+        g.drawString(
+                "PV : " + h.getVie(),
+                10,
+                20
+        );
+
+        Monstre m = jeu.getMonstre();
+
+        g.setColor(Color.RED);
+        g.fillOval(
+                m.getPos().x * TAILLE,
+                m.getPos().y * TAILLE,
                 TAILLE,
                 TAILLE
         );
