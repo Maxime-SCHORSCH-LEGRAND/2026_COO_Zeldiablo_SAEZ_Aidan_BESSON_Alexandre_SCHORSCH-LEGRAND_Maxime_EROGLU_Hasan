@@ -31,5 +31,7 @@ public class Hero extends Personnage {
         if (this.vie < 0) {
             this.vie = 0;
         }
+
     }
+
 }

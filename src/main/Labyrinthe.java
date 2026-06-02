@@ -32,7 +32,7 @@ public class Labyrinthe {
                 grille[y][x] = c;
 
                 if (c == 'H') {
-                    hero = new Hero(x, y,20);
+                    hero = new Hero(x, y, 20);
                     grille[y][x] = '.';
                 }
 
@@ -55,8 +55,10 @@ public class Labyrinthe {
     public Hero getHero() {
         return hero;
     }
-    public Monstre getMonstre(){return monstre;}
 
+    public Monstre getMonstre() {
+        return monstre;
+    }
 
 
 }
