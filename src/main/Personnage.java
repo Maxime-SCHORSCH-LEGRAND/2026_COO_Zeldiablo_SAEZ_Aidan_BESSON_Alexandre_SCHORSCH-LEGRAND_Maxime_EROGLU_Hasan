@@ -24,6 +24,9 @@ public abstract class Personnage {
             this.vie = 0;
         }
     }
+    public boolean estVivant() {
+        return vie > 0;
+    }
 
 
 }

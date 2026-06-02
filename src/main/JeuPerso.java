@@ -4,61 +4,82 @@ import moteurJeu.Commande;
 import moteurJeu.Jeu;
 
 public class JeuPerso implements Jeu {
-    private int direction;
+
     private Labyrinthe labyrinthe;
     private Hero hero;
     private Monstre monstre;
 
 
+    private int animX = -1;
+    private int animY = -1;
+    private int animTimer = 0;
+
     public JeuPerso(Labyrinthe labyrinthe) {
         this.labyrinthe = labyrinthe;
         this.hero = labyrinthe.getHero();
+        this.monstre = labyrinthe.getMonstre();
     }
 
-    private int x=1;
-    private int y=1;
-
-
-
+    @Override
     public void evoluer(Commande c) {
 
         int nx = hero.getPos().x;
         int ny = hero.getPos().y;
 
-        if (c.gauche) { nx--; direction = 1; }
-        if (c.droite) { nx++; direction = 2; }
-        if (c.haut)   { ny--; direction = 3; }
-        if (c.bas)    { ny++; direction = 4; }
+        if (c.gauche) nx--;
+        if (c.droite) nx++;
+        if (c.haut) ny--;
+        if (c.bas) ny++;
 
         if (labyrinthe.estLibre(nx, ny)) {
             hero.deplacer(nx, ny);
         }
-    }
 
-    private void attaquer() {
-        int cibleX = hero.getPos().x;
-        int cibleY = hero.getPos().y;
 
-        switch (direction) {
-            case 1: cibleX--; break;
-            case 2: cibleX++; break;
-            case 3: cibleY--; break;
-            case 4: cibleY++; break;
+        if (c.f) {
+            hero.attaquer(monstre, -1, 0);
+            animX = hero.getPos().x - 1;
+            animY = hero.getPos().y;
+            animTimer = 10;
         }
 
-        for (Monstre monstre : labyrinthe.getMonstre()) {
-            if (monstre.getPos().x == cibleX && monstre.getPos().y == cibleY) {
-                monstre.subirdegat(hero.getDegat());
-                break;
-            }
+        if (c.t) {
+            hero.attaquer(monstre, 0, -1);
+            animX = hero.getPos().x;
+            animY = hero.getPos().y - 1;
+            animTimer = 10;
+        }
+
+
+        if (c.g) {
+            hero.attaquer(monstre, 0, 1);
+            animX = hero.getPos().x;
+            animY = hero.getPos().y + 1;
+            animTimer = 10;
+        }
+
+
+        if (c.h) {
+            hero.attaquer(monstre, 1, 0);
+            animX = hero.getPos().x + 1;
+            animY = hero.getPos().y;
+            animTimer = 10;
+        }
+
+
+        if (animTimer > 0) {
+            animTimer--;
+        }
+
+        if (monstre != null && monstre.estVivant()) {
+            monstre.deplacer(labyrinthe);
         }
     }
 
+    @Override
     public boolean etreFini() {
-        return false;
+        return !hero.estVivant();
     }
-
-
     public Labyrinthe getLabyrinthe() {
         return labyrinthe;
     }
@@ -66,14 +87,20 @@ public class JeuPerso implements Jeu {
     public Hero getHero() {
         return hero;
     }
-    public int getX(){
-        return this.x;
+
+    public Monstre getMonstre() {
+        return monstre;
     }
 
-    public int getY(){
-        return this.y;
+    public int getAnimX() {
+        return animX;
     }
-    public Monstre getMonstre(){return monstre;}
+
+    public int getAnimY() {
+        return animY;
+    }
+
+    public int getAnimTimer() {
+        return animTimer;
+    }
 }
-
-
