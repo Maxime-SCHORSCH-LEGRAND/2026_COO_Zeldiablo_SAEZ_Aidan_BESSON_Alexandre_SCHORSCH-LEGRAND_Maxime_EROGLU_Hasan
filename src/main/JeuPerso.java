@@ -26,7 +26,6 @@ public class JeuPerso implements Jeu {
         int nx = hero.getPos().x;
         int ny = hero.getPos().y;
 
-
         if (c.gauche) nx--;
         if (c.droite) nx++;
         if (c.haut) ny--;
@@ -43,7 +42,6 @@ public class JeuPerso implements Jeu {
             animY = hero.getPos().y;
             animTimer = 10;
         }
-
 
         if (c.t) {
             hero.attaquer(monstre, 0, -1);
@@ -73,7 +71,6 @@ public class JeuPerso implements Jeu {
             animTimer--;
         }
 
-
         if (monstre != null && monstre.estVivant()) {
             monstre.deplacer(labyrinthe);
         }
@@ -95,7 +92,6 @@ public class JeuPerso implements Jeu {
     public Monstre getMonstre() {
         return monstre;
     }
-
 
     public int getAnimX() {
         return animX;

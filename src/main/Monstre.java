@@ -11,7 +11,7 @@ public class Monstre {
 
     private int cooldown = 0;
 
-    public Monstre(int x, int y,int vie) {
+    public Monstre(int x, int y, int vie) {
         pos = new Position(x, y);
         random = new Random();
         this.vie = vie ;
