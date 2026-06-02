@@ -10,10 +10,12 @@ interface Jeu{
 
 class Monstre{
 -pos: Position
-+Monstre()
++Monstre(int x , int y , int vie)
 +getPos(): Postion
-+deplacer()
++deplacer(Labyrinthe labyrinthe)
 +subirDegtat(int d)
++getVie():int
++estVivant():boolean
 }
 
 abstract Personnage{
@@ -22,15 +24,17 @@ abstract Personnage{
 +Personnage(int x, int y, int vie)
 +getPos(): Position
 +getVie(): int
-subirDegtat(int d)
++subirDegtat(int d)
++estVivant(): boolean
 }
 
 class Hero{
 -pos: Position
-+Hero()
++Hero(int x , int y , int vie)
 +getPos(): Postion
-+deplacer()
++deplacer(int x , int y)
 +subirDegtat(int d)
++attaquer(Monstre monstre,int dy ,int dx)
 }
 
 class Labyrinthe{
@@ -40,6 +44,7 @@ class Labyrinthe{
 +estLibre(int x, int y): boolean
 +getGrille(): char[][]
 +getHero(): Hero
++getMonstre():Monstre
 }
 
 class LabyrintheDessin{
@@ -62,9 +67,9 @@ class JeuPerso{
 +etreFini(): boolean
 +getLabyrinthe(): labyrinthe
 +getHero():  Hero
-+getX(): x
-+getY(): y
-+attaquer(int a)
++getAnimY():int
++getAnimX():int
++getAnimTime():int
 }
 
 Hero --> Personnage

@@ -33,7 +33,7 @@ public class Hero extends Personnage {
         }
     }
 
-    //j'ai envie de mourrir
+
     public void perdreVie(int degats) {
         vie -= degats;
 

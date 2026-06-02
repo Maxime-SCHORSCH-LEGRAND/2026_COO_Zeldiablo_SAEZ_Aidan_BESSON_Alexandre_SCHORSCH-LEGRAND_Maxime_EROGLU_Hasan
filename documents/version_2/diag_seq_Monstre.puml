@@ -1,26 +1,46 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
+actor Joueur
 
-@startuml
-autonumber
+participant Main
+participant Labyrinthe
+participant Hero
+participant Monstre
+participant JeuPerso
+participant MoteurGraphique
 
-Main -> JeuPerso: initialisation()
-JeuPerso -> Labyrinthe: creation()
+== Lancement du jeu ==
 
+Joueur -> Main : lancer application
 
-JeuPerso -> Labyrinthe: generer_coordonnees_aleatoires()
-Labyrinthe --> JeuPerso: x, y
+Main -> Labyrinthe : new Labyrinthe(fichier.txt)
 
-JeuPerso -> Labyrinthe: verification_case_vide(x, y)
-Labyrinthe --> JeuPerso: validation
+Labyrinthe -> Hero : création héros (x,y,PV)
+Labyrinthe -> Monstre : création monstre (x,y,PV)
 
-alt validation == true
-    JeuPerso -> Monstre: new Monstre(x, y)
-    JeuPerso <-- Monstre:
-    JeuPerso -> JeuPerso: definir_monstre()
-else validation == false
-    JeuPerso -> JeuPerso: relancer_recherche_case()
+Main -> JeuPerso : new JeuPerso(labyrinthe)
+Main -> MoteurGraphique : lancerJeu()
+
+MoteurGraphique -> JeuPerso : boucle de jeu
+
+== Déplacement du monstre ==
+
+loop chaque frame
+
+    MoteurGraphique -> JeuPerso : evoluer()
+
+    JeuPerso -> Monstre : deplacer(labyrinthe)
+
+    Monstre -> Monstre : choisir direction aléatoire
+
+    Monstre -> Labyrinthe : estLibre(nx, ny)
+
+    alt case libre
+        Monstre -> Monstre : update position
+    else mur
+        Monstre -> Monstre : reste en place
+    end
+
 end
 
 @enduml

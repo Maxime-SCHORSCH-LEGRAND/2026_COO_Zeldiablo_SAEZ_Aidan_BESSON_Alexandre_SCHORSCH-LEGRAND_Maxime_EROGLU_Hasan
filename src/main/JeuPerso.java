@@ -9,7 +9,7 @@ public class JeuPerso implements Jeu {
     private Hero hero;
     private Monstre monstre;
 
-    // ⚔️ animation attaque
+
     private int animX = -1;
     private int animY = -1;
     private int animTimer = 0;
@@ -26,7 +26,7 @@ public class JeuPerso implements Jeu {
         int nx = hero.getPos().x;
         int ny = hero.getPos().y;
 
-        // 🚶 déplacement
+
         if (c.gauche) nx--;
         if (c.droite) nx++;
         if (c.haut) ny--;
@@ -36,7 +36,7 @@ public class JeuPerso implements Jeu {
             hero.deplacer(nx, ny);
         }
 
-        // ⚔️ attaque gauche
+
         if (c.f) {
             hero.attaquer(monstre, -1, 0);
             animX = hero.getPos().x - 1;
@@ -44,7 +44,7 @@ public class JeuPerso implements Jeu {
             animTimer = 10;
         }
 
-        // ⚔️ attaque haut
+
         if (c.t) {
             hero.attaquer(monstre, 0, -1);
             animX = hero.getPos().x;
@@ -52,7 +52,7 @@ public class JeuPerso implements Jeu {
             animTimer = 10;
         }
 
-        // ⚔️ attaque bas
+
         if (c.g) {
             hero.attaquer(monstre, 0, 1);
             animX = hero.getPos().x;
@@ -60,7 +60,7 @@ public class JeuPerso implements Jeu {
             animTimer = 10;
         }
 
-        // ⚔️ attaque droite
+
         if (c.h) {
             hero.attaquer(monstre, 1, 0);
             animX = hero.getPos().x + 1;
@@ -68,12 +68,12 @@ public class JeuPerso implements Jeu {
             animTimer = 10;
         }
 
-        // ⏳ timer animation
+
         if (animTimer > 0) {
             animTimer--;
         }
 
-        // 🧟 monstre bouge
+
         if (monstre != null && monstre.estVivant()) {
             monstre.deplacer(labyrinthe);
         }
@@ -96,7 +96,7 @@ public class JeuPerso implements Jeu {
         return monstre;
     }
 
-    // ⚡ getters animation
+
     public int getAnimX() {
         return animX;
     }
