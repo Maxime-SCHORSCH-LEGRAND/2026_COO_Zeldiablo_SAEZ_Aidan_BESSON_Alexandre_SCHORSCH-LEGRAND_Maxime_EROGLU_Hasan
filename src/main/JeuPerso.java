@@ -8,6 +8,7 @@ public class JeuPerso implements Jeu {
     private Labyrinthe labyrinthe;
     private Hero hero;
     private Monstre monstre;
+    private int direction = 4;
 
 
     private int animX = -1;
@@ -25,10 +26,22 @@ public class JeuPerso implements Jeu {
         int nx = hero.getPos().x;
         int ny = hero.getPos().y;
 
-        if (c.gauche) nx--;
-        if (c.droite) nx++;
-        if (c.haut) ny--;
-        if (c.bas) ny++;
+        if (c.gauche) {
+            nx--;
+            direction = 1;
+        }
+        if (c.droite) {
+            nx++;
+            direction = 2;
+        }
+        if (c.haut) {
+            ny--;
+            direction = 3;
+        }
+        if (c.bas) {
+            ny++;
+            direction = 4;
+        }
 
         if (labyrinthe.estLibre(nx, ny)) {
             hero.deplacer(nx, ny);
@@ -73,6 +86,9 @@ public class JeuPerso implements Jeu {
         if (monstre != null && monstre.estVivant()) {
             monstre.Dash(labyrinthe, hero);
         }
+        if (c.espace) {
+            hero.Charge(direction, labyrinthe, monstre);
+        }
     }
     
     public boolean etreFini() {
@@ -102,4 +118,6 @@ public class JeuPerso implements Jeu {
     public int getAnimTimer() {
         return animTimer;
     }
+
+
 }

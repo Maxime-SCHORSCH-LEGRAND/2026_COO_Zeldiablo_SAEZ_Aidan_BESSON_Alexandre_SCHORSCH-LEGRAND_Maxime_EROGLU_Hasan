@@ -15,6 +15,8 @@ public class Commande {
 	public boolean g;
 	public boolean h;
 
+
+
 	public boolean attaque;
 
 	public Commande() {

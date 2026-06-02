@@ -1,0 +1,12 @@
+@startuml
+autonumber
+
+Utilisateur -> Controleur : appuie sur espace
+Controleur -> JeuPerso : evoluer(commande)
+JeuPerso -> Hero : charger(labyrinthe, dx, dy)
+  loop [i de 1 à 3, case libre et pas de monstre]
+    Hero -> Labyrinthe : estLibre(nx, ny)
+    Labyrinthe --> Hero : true
+    Hero -> Hero : deplacer(nx, ny)
+  end
+Hero --> JeuPerso

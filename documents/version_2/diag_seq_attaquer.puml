@@ -1,18 +1,26 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+actor Joueur
 
-participant main
+participant JeuPerso
+participant Hero
+participant Monstre
 
+== Attaque directionnelle ==
 
-participant hero
+Joueur -> JeuPerso : appuie F / T / G / H
 
+JeuPerso -> Hero : attaquer(monstre, direction)
 
-participant monstre
+Hero -> Hero : calcul case cible (FTGH)
 
-main -> hero : attaquer((degat:int)
-hero -> monstre : recevoirDegat.(degat:int)
-monstre --> hero : vie : int
-hero --> main
+Hero -> Monstre : vérifier position
+
+alt monstre sur case ciblée
+    Hero -> Monstre : subirdegat(dégâts)
+    Monstre -> Monstre : vie -= dégâts
+else aucune cible
+    Hero -> Hero : attaque ratée
+end
+
 @enduml
