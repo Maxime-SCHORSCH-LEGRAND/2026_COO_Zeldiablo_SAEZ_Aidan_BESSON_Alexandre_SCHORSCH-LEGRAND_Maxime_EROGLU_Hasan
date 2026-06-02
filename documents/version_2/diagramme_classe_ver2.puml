@@ -13,7 +13,6 @@ class Monstre{
 +Monstre()
 +getPos(): Postion
 +deplacer()
-+attaquer(int a)
 +subirDegtat(int d)
 }
 
@@ -23,7 +22,6 @@ abstract Personnage{
 +Personnage(int x, int y, int vie)
 +getPos(): Position
 +getVie(): int
-+attaquer(int a)
 subirDegtat(int d)
 }
 
@@ -32,7 +30,6 @@ class Hero{
 +Hero()
 +getPos(): Postion
 +deplacer()
-+attaquer(int a)
 +subirDegtat(int d)
 }
 
@@ -67,6 +64,7 @@ class JeuPerso{
 +getHero():  Hero
 +getX(): x
 +getY(): y
++attaquer(int a)
 }
 
 Hero --> Personnage

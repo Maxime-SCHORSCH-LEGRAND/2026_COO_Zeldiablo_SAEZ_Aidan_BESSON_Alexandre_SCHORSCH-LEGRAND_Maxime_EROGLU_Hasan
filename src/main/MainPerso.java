@@ -12,8 +12,7 @@ public class MainPerso {
 
         LabyrintheDessin dessin = new LabyrintheDessin(jeu);
 
-        MoteurGraphique moteur =
-                new MoteurGraphique(jeu, dessin);
+        MoteurGraphique moteur = new MoteurGraphique(jeu, dessin);
 
         moteur.lancerJeu(800, 600);
     }

@@ -8,7 +8,9 @@ import java.util.*;
 public class Labyrinthe {
 
     private final char[][] grille;
+
     private Hero hero;
+    private Monstre monstre;
 
     public Labyrinthe(String fichier) throws IOException {
 
@@ -31,6 +33,11 @@ public class Labyrinthe {
 
                 if (c == 'H') {
                     hero = new Hero(x, y,20);
+                    grille[y][x] = '.';
+                }
+
+                if (c == 'M') {
+                    monstre = new Monstre(x, y, 20);
                     grille[y][x] = '.';
                 }
             }
