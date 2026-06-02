@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+== dash ==
+
+participant mainPerso
+
+
+participant monstre
+
+
+participant personnage
+
+mainPerso -> monstre : dash(degat:int)
+monstre -> personnage : subirDegat.(degat:int)
+personnage --> monstre : vie : int
+monstre --> mainPerso
+@enduml
