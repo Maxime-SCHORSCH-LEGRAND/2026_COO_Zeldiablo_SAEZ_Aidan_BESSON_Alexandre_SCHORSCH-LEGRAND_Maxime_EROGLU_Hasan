@@ -7,12 +7,17 @@ public class JeuPerso implements Jeu {
 
     private Labyrinthe labyrinthe;
     private Hero hero;
+    private Monstre monstre;
 
-    private int direction = 4;
+    // ⚔️ animation attaque
+    private int animX = -1;
+    private int animY = -1;
+    private int animTimer = 0;
 
     public JeuPerso(Labyrinthe labyrinthe) {
         this.labyrinthe = labyrinthe;
         this.hero = labyrinthe.getHero();
+        this.monstre = labyrinthe.getMonstre();
     }
 
     @Override
@@ -21,24 +26,56 @@ public class JeuPerso implements Jeu {
         int nx = hero.getPos().x;
         int ny = hero.getPos().y;
 
-        if (c.gauche) { nx--; direction = 1; }
-        if (c.droite) { nx++; direction = 2; }
-        if (c.haut)   { ny--; direction = 3; }
-        if (c.bas)    { ny++; direction = 4; }
+        // 🚶 déplacement
+        if (c.gauche) nx--;
+        if (c.droite) nx++;
+        if (c.haut) ny--;
+        if (c.bas) ny++;
 
         if (labyrinthe.estLibre(nx, ny)) {
             hero.deplacer(nx, ny);
         }
 
-        if (c.espace) {
-            hero.attaquer(labyrinthe.getMonstre(), direction);
+        // ⚔️ attaque gauche
+        if (c.f) {
+            hero.attaquer(monstre, -1, 0);
+            animX = hero.getPos().x - 1;
+            animY = hero.getPos().y;
+            animTimer = 10;
         }
 
-        // monstre bouge
-        if (labyrinthe.getMonstre() != null &&
-                labyrinthe.getMonstre().estVivant()) {
+        // ⚔️ attaque haut
+        if (c.t) {
+            hero.attaquer(monstre, 0, -1);
+            animX = hero.getPos().x;
+            animY = hero.getPos().y - 1;
+            animTimer = 10;
+        }
 
-            labyrinthe.getMonstre().deplacer(labyrinthe);
+        // ⚔️ attaque bas
+        if (c.g) {
+            hero.attaquer(monstre, 0, 1);
+            animX = hero.getPos().x;
+            animY = hero.getPos().y + 1;
+            animTimer = 10;
+        }
+
+        // ⚔️ attaque droite
+        if (c.h) {
+            hero.attaquer(monstre, 1, 0);
+            animX = hero.getPos().x + 1;
+            animY = hero.getPos().y;
+            animTimer = 10;
+        }
+
+        // ⏳ timer animation
+        if (animTimer > 0) {
+            animTimer--;
+        }
+
+        // 🧟 monstre bouge
+        if (monstre != null && monstre.estVivant()) {
+            monstre.deplacer(labyrinthe);
         }
     }
 
@@ -53,5 +90,22 @@ public class JeuPerso implements Jeu {
 
     public Hero getHero() {
         return hero;
+    }
+
+    public Monstre getMonstre() {
+        return monstre;
+    }
+
+    // ⚡ getters animation
+    public int getAnimX() {
+        return animX;
+    }
+
+    public int getAnimY() {
+        return animY;
+    }
+
+    public int getAnimTimer() {
+        return animTimer;
     }
 }

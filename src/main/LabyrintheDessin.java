@@ -23,11 +23,10 @@ public class LabyrintheDessin implements DessinJeu {
 
         char[][] grille = jeu.getLabyrinthe().getGrille();
 
-        // 🧼 fond
+
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
 
-        // 🧱 labyrinthe
         for (int y = 0; y < grille.length; y++) {
             for (int x = 0; x < grille[y].length; x++) {
 
@@ -37,16 +36,11 @@ public class LabyrintheDessin implements DessinJeu {
                     g.setColor(Color.WHITE);
                 }
 
-                g.fillRect(
-                        x * TAILLE,
-                        y * TAILLE,
-                        TAILLE,
-                        TAILLE
-                );
+                g.fillRect(x * TAILLE, y * TAILLE, TAILLE, TAILLE);
             }
         }
 
-        // 🧍 HERO
+
         Hero h = jeu.getHero();
 
         g.setColor(Color.BLUE);
@@ -57,11 +51,10 @@ public class LabyrintheDessin implements DessinJeu {
                 TAILLE
         );
 
-        // 👾 MONSTRE
-        Monstre m = jeu.getLabyrinthe().getMonstre();
+
+        Monstre m = jeu.getMonstre();
 
         if (m != null && m.estVivant()) {
-
             g.setColor(Color.RED);
             g.fillOval(
                     m.getPos().x * TAILLE,
@@ -69,17 +62,20 @@ public class LabyrintheDessin implements DessinJeu {
                     TAILLE,
                     TAILLE
             );
-
-            // ❤️ barre de vie monstre
-            g.setColor(Color.RED);
-            g.drawString("HP: " + m.getVie(),
-                    m.getPos().x * TAILLE,
-                    m.getPos().y * TAILLE - 5);
         }
 
-        // ❤️ vie du héros
-        g.setColor(Color.GREEN);
-        g.drawString("PV: " + h.getVie(), 10, 20);
+
+        if (jeu.getAnimTimer() > 0) {
+
+            g.setColor(Color.YELLOW);
+
+            g.fillOval(
+                    jeu.getAnimX() * TAILLE,
+                    jeu.getAnimY() * TAILLE,
+                    TAILLE,
+                    TAILLE
+            );
+        }
 
         g.dispose();
     }
