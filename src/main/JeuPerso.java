@@ -46,7 +46,7 @@ public class JeuPerso implements Jeu {
             case 4: cibleY++; break;
         }
 
-        for (Monstre monstre : labyrinthe.getMonstres()) {
+        for (Monstre monstre : labyrinthe.getMonstre()) {
             if (monstre.getPos().x == cibleX && monstre.getPos().y == cibleY) {
                 monstre.subirdegat(hero.getDegat());
                 break;
