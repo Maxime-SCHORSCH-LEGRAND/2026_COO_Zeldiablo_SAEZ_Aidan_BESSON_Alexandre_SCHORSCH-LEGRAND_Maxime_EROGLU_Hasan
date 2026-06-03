@@ -100,6 +100,11 @@ public class JeuPerso implements Jeu {
                 monstre.deplacer(labyrinthe);
             }
         }
+
+        if (phantome != null && phantome.estVivant()) {
+            phantome.deplacer(labyrinthe);
+        }
+
         if (c.espace) {
             hero.Charge(direction, labyrinthe, monstre);
         }
