@@ -7,9 +7,4 @@ title: Phantome
 
 MainPerso -> JeuPerso: new JeuPerso(lab)
 JeuPerso --> Monstre: Authentication Response
-
-== Repetition ==
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-@enduml
+ @enduml
