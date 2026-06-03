@@ -1,0 +1,130 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class MainPerso
+
+interface Jeu{
++evoluer(Commande commandeUser)
++etreFini(): boolean
+}
+
+class Monstre{
+-cooldown: int
+-degatFixe: int
+-etatDash: int
+-dashX: int
+-dashY: int
+-etapesDash: int
++Monstre(int x , int y , int vie)
++getPos(): Position
++deplacer(Labyrinthe labyrinthe)
++Dash(Labyrinthe labyrinthe, Hero hero)
++subirDegatPhysique(int coup): int
+}
+
+class Phantome{
+-{static} sort: int
+-random: Random
+-cooldown: int
++Phantome(int x, int y, int vie)
++attaque(Personnage cible, int dx, int dy)
++deplacer(Labyrinthe labyrinthe)
++subirDegatPhysique(int coup): int
+}
+
+abstract Personnage{
+#pos: Position
+#vie: int
++Personnage(int x, int y, int vie)
++getPos(): Position
++estVivant(): boolean
++{abstract} subirDegatPhysique(int coup): int
+}
+
+class Hero{
+-degatPhysique: int
+-degatMagique: int
+-modeMagique: boolean
++Hero(int x , int y , int vie)
++alterModeAttaque()
++deplacer(int x , int y)
++attaquer(Personnage cible, int dx, int dy)
++perdreVie(int d)
++subirDegatPhysique(int coup): int
++Charge(int direction, Labyrinthe lab, Monstre monstre)
++estMort(): boolean
+}
+
+class Labyrinthe{
+-grille: char[][]
+-sortie: Position
+-hero: Hero
+-monstre: Monstre
+-phantome: Phantome
++Labyrinthe(String fichier)
++estLibre(int x, int y): boolean
++estLibrePhantome(int x, int y): boolean
++getGrille(): char[][]
++getHero(): Hero
++getMonstre(): Monstre
++getPhantome(): Phantome
++getSortie(): Position
+}
+
+class LabyrintheDessin{
+-jeu: JeuPerso
++LabyrintheDessin(JeuPerso j)
++dessiner(BufferedImage image)
+}
+
+interface DessinJeu{
++dessiner(BufferedImage im)
+}
+
+class JeuPerso{
+-labyrinthe: Labyrinthe
+-hero: Hero
+-monstre: Monstre
+-phantome: Phantome
+-direction: int
+-animX: int
+-animY: int
+-animTimer: int
+-victoire: boolean
++JeuPerso(Labyrinthe labyrinthe)
+-trouverCible(int x, int y): Personnage
++evoluer(Commande c)
++etreFini(): boolean
++getLabyrinthe(): Labyrinthe
++getHero(): Hero
++getMonstre(): Monstre
++getPhantome(): Phantome
++getAnimX(): int
++getAnimY(): int
++getAnimTimer(): int
+}
+
+class Position{
++x: int
++y: int
++Position(int x, int y)
++getX(): int
++getY(): int
+}
+
+Hero --|> Personnage
+Monstre--|> Personnage
+Phantome --|> Personnage
+Personnage --> MainPerso
+Labyrinthe --> MainPerso
+
+Position<--Personnage
+JeuPerso-->Hero
+
+JeuPerso..>Jeu
+LabyrintheDessin-->MainPerso
+JeuPerso-->MainPerso
+
+DessinJeu<.. LabyrintheDessin
+
+@enduml
