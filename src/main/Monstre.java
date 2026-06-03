@@ -113,7 +113,7 @@ public class Monstre {
                 etapesDash++;
 
                 if (pos.x == hero.getPos().x && pos.y == hero.getPos().y) {
-                    hero.subirdegat(degatFixe);
+                    hero.subirDegatPhysique(degatFixe);
                     etatDash = 2;
                     cooldown = 0;
                 }

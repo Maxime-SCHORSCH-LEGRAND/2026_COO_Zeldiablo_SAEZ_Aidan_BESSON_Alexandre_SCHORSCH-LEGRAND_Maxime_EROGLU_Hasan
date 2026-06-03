@@ -70,7 +70,9 @@ public class Hero extends Personnage {
     }
 
     public int subirDegatPhysique(int coup) {
-        return 1;
+        this.vie = Math.max(0, this.vie - coup);
+        System.out.println("Pv héro :"+this.vie);
+        return this.vie;
     }
 
     public int subirDegatMagique(int sort) {
