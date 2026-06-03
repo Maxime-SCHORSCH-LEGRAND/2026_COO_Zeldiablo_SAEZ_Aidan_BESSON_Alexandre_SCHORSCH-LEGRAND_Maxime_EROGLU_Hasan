@@ -19,7 +19,7 @@ public class JeuPerso implements Jeu {
         this.hero = labyrinthe.getHero();
         this.monstre = labyrinthe.getMonstre();
     }
-    
+
     public void evoluer(Commande c) {
 
         int nx = hero.getPos().x;
