@@ -33,7 +33,7 @@ public class Hero extends Personnage {
         }
     }
 
-    //j'ai envie de mourrir
+
     public void perdreVie(int degats) {
         vie -= degats;
 
@@ -68,5 +68,16 @@ public class Hero extends Personnage {
             }
             this.deplacer(caseSuivanteX, caseSuivanteY);
         }
+    }
+    public int subirDegatPhysique(int coup) {
+        //this.vie = Math.max(0, this.vie - coup);
+        //return this.vie;
+        return 1;
+    }
+
+    public int subirDegatMagique(int sort) {
+        //this.vie = Math.max(0, this.vie - sort);
+        //return this.vie;
+        return 1;
     }
 }

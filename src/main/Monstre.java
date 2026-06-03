@@ -62,10 +62,10 @@ public class Monstre {
         int choix = random.nextInt(4);
 
         int nx = pos.x + directions[choix][0];
-        int ny = pos.y + directions[choix][1];
+        int ny = pos.y+ directions[choix][1];
 
         if (labyrinthe.estLibre(nx, ny)) {
-            pos.x = nx;
+            pos.x =nx ;
             pos.y = ny;
         }
 
@@ -126,6 +126,15 @@ public class Monstre {
                 cooldown = 0;
             }
         }
+    }
+    public int subirDegatPhysique(int coup) {
+        this.vie = Math.max(0, this.vie - coup);
+        return this.vie;
+    }
+
+    public int subirDegatMagique(int sort) {
+        this.vie = Math.max(0, this.vie - sort);
+        return this.vie;
     }
 
 }

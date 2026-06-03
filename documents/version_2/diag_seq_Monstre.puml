@@ -1,8 +1,8 @@
 @startuml
 
-actor Joueur
 
-participant Main
+
+participant MainPerso
 participant Labyrinthe
 participant Hero
 participant Monstre
@@ -11,17 +11,17 @@ participant MoteurGraphique
 
 == Lancement du jeu ==
 
-Joueur -> Main : lancer application
 
-Main -> Labyrinthe : new Labyrinthe(fichier.txt)
+
+MainPerso -> Labyrinthe : new Labyrinthe(labyrinthe.txt)
 
 Labyrinthe -> Hero : création héros (x,y,PV)
 Labyrinthe -> Monstre : création monstre (x,y,PV)
 
-Main -> JeuPerso : new JeuPerso(labyrinthe)
-Main -> MoteurGraphique : lancerJeu()
+MainPerso -> JeuPerso : new JeuPerso(labyrinthe)
+MainPerso -> MoteurGraphique : lancerJeu()
 
-MoteurGraphique -> JeuPerso : boucle de jeu
+
 
 == Déplacement du monstre ==
 
