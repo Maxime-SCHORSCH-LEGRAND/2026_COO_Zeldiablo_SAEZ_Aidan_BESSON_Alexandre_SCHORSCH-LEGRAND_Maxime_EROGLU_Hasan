@@ -39,14 +39,12 @@ abstract Personnage{
 +getPos(): Position
 +estVivant(): boolean
 +{abstract} subirDegatPhysique(int coup): int
++getVie():int
 }
 
 class Hero{
 -degatPhysique: int
--degatMagique: int
--modeMagique: boolean
 +Hero(int x , int y , int vie)
-+alterModeAttaque()
 +deplacer(int x , int y)
 +attaquer(Personnage cible, int dx, int dy)
 +perdreVie(int d)
@@ -90,9 +88,8 @@ class JeuPerso{
 -animX: int
 -animY: int
 -animTimer: int
--victoire: boolean
 +JeuPerso(Labyrinthe labyrinthe)
--trouverCible(int x, int y): Personnage
++trouverCible(int x, int y): Personnage
 +evoluer(Commande c)
 +etreFini(): boolean
 +getLabyrinthe(): Labyrinthe

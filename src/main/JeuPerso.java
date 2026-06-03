@@ -46,11 +46,6 @@ public class JeuPerso implements Jeu {
     private int animTimer = 0;
 
     /**
-     * attribut victoire du jeu
-     */
-    private boolean victoire = false;
-
-    /**
      * constructeur du JeuPerso
      * @param labyrinthe
      */
@@ -170,8 +165,7 @@ public class JeuPerso implements Jeu {
 
             if (monstreMort && fantomeMort) {
                 System.out.println("VICTOIRE !");
-                victoire = true;
-            }
+                           }
         }
     }
 
