@@ -11,10 +11,11 @@ public class JeuPerso implements Jeu {
     private Phantome phantome;
     private int direction = 4;
 
-
     private int animX = -1;
     private int animY = -1;
     private int animTimer = 0;
+
+    private boolean toucheAPressee = false;
 
     public JeuPerso(Labyrinthe labyrinthe) {
         this.labyrinthe = labyrinthe;
@@ -23,24 +24,44 @@ public class JeuPerso implements Jeu {
         this.phantome = labyrinthe.getPhantome();
     }
 
-    @Override
-    public void evoluer(Commande c) {
+    private Personnage trouverCible(int x, int y) {
+        if (monstre != null && monstre.estVivant() && monstre.getPos().x == x && monstre.getPos().y == y) {
+            return monstre;
+        }
+        if (phantome != null && phantome.estVivant() && phantome.getPos().x == x && phantome.getPos().y == y) {
+            return phantome;
+        }
+        return null;
+    }
 
-        int nx = hero.getPos().getX();
-        int ny = hero.getPos().getY();
+    public void evoluer(Commande c) {
+        int nx = hero.getPos().x;
+        int ny = hero.getPos().y;
+
+        if (c.a) {
+            if (!toucheAPressee) {
+                hero.alterModeAttaque(); // 👈 Mis à jour ici
+                toucheAPressee = true;
+            }
+        } else {
+            toucheAPressee = false;
+        }
 
         if (c.gauche) {
             nx--;
             direction = 1;
         }
+
         if (c.droite) {
             nx++;
             direction = 2;
         }
+
         if (c.haut) {
             ny--;
             direction = 3;
         }
+
         if (c.bas) {
             ny++;
             direction = 4;
@@ -50,59 +71,49 @@ public class JeuPerso implements Jeu {
             hero.deplacer(nx, ny);
         }
 
-
+        // Gestion des attaques directionnelles du héros
         if (c.f) {
-            hero.attaquer(monstre, -1, 0);
-            animX = hero.getPos().x - 1;
-            animY = hero.getPos().y;
+            animX = hero.getPos().x - 1; animY = hero.getPos().y;
+            hero.attaquer(trouverCible(animX, animY), -1, 0);
             animTimer = 10;
         }
-
         if (c.t) {
-            hero.attaquer(monstre, 0, -1);
-            animX = hero.getPos().x;
-            animY = hero.getPos().y - 1;
+            animX = hero.getPos().x; animY = hero.getPos().y - 1;
+            hero.attaquer(trouverCible(animX, animY), 0, -1);
             animTimer = 10;
         }
-
-
         if (c.g) {
-            hero.attaquer(monstre, 0, 1);
-            animX = hero.getPos().x;
-            animY = hero.getPos().y + 1;
+            animX = hero.getPos().x; animY = hero.getPos().y + 1;
+            hero.attaquer(trouverCible(animX, animY), 0, 1);
             animTimer = 10;
         }
-
-
         if (c.h) {
-            hero.attaquer(monstre, 1, 0);
-            animX = hero.getPos().x + 1;
-            animY = hero.getPos().y;
+            animX = hero.getPos().x + 1; animY = hero.getPos().y;
+            hero.attaquer(trouverCible(animX, animY), 1, 0);
             animTimer = 10;
         }
 
+        if (animTimer > 0) animTimer--;
 
-        if (animTimer > 0) {
-            animTimer--;
-        }
-
-        Monstre monstre = labyrinthe.getMonstre();
-
+        // Comportement du Monstre
         if (monstre != null && monstre.estVivant()) {
-
-            boolean memeLigne = monstre.getPos().y == hero.getPos().y;
-
-            boolean memeColonne = monstre.getPos().x == hero.getPos().x;
-
-            if (memeLigne || memeColonne) {
+            if (monstre.getPos().y == hero.getPos().y || monstre.getPos().x == hero.getPos().x) {
                 monstre.Dash(labyrinthe, hero);
             } else {
                 monstre.deplacer(labyrinthe);
             }
         }
 
+        // Comportement du Fantôme
         if (phantome != null && phantome.estVivant()) {
-            phantome.deplacer(labyrinthe);
+            boolean memeLigne = phantome.getPos().y == hero.getPos().y;
+            boolean memeColonne = phantome.getPos().x == hero.getPos().x;
+
+            if (memeLigne || memeColonne) {
+                phantome.attaqueMagique(hero, hero.getPos().x, hero.getPos().y);
+            } else {
+                phantome.deplacer(labyrinthe);
+            }
         }
 
         if (c.espace) {
@@ -127,6 +138,10 @@ public class JeuPerso implements Jeu {
         return monstre;
     }
 
+    public Phantome getPhantome() {
+        return phantome;
+    }
+
     public int getAnimX() {
         return animX;
     }
@@ -138,9 +153,4 @@ public class JeuPerso implements Jeu {
     public int getAnimTimer() {
         return animTimer;
     }
-
-    public Phantome getPhantome(){
-        return phantome;
-    }
-
 }

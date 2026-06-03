@@ -2,78 +2,68 @@ package main;
 
 import java.util.Random;
 
-public class Monstre {
+public class Monstre extends Personnage {
 
-    private Position pos;
     private Random random;
 
-    private int vie;
-
-    private int cooldown = 0;
+    // Cooldowns distincts pour éviter les conflits dans la machine à états
+    private int cooldownDeplacement = 0;
+    private int cooldownPostDash = 0;
 
     private int degatFixe = 5;
-    private int etatDash = 0;
+    private int etatDash = 0; // 0: Normal, 1: Dash en cours, 2: Récupération
     private int dashX = 0;
     private int dashY = 0;
     private int etapesDash = 0;
 
     public Monstre(int x, int y, int vie) {
-        pos = new Position(x, y);
+        super(x, y, vie);
         random = new Random();
-        this.vie = vie ;
     }
 
-    public Position getPos() {
-        return pos;
+    public int subirDegatPhysique(int coup, Personnage attaquant) {
+        this.vie -= coup;
+        if (this.vie < 0) this.vie = 0;
+        System.out.println("Monstre touché par une attaque physique ! Vie restante : " + this.vie);
+        return this.vie;
     }
 
-    public int getVie() {
-        return vie;
+    public int subirDegatMagique(int sort, Personnage attaquant) {
+        this.vie -= sort;
+        if (this.vie < 0) this.vie = 0;
+        System.out.println("Monstre brûlé par la magie ! Vie restante : " + this.vie);
+        return this.vie;
     }
-
-    public boolean estVivant() {
-        return vie > 0;
-    }
-
-
 
     public void deplacer(Labyrinthe labyrinthe) {
-
         if (!estVivant()) return;
 
-        if (cooldown > 0) {
-            cooldown--;
+        if (cooldownDeplacement > 0) {
+            cooldownDeplacement--;
             return;
         }
 
-        int[][] directions = {
-                {0,-1},
-                {0,1},
-                {-1,0},
-                {1,0}
-        };
-
+        int[][] directions = {{0,-1}, {0,1}, {-1,0}, {1,0}};
         int choix = random.nextInt(4);
 
         int nx = pos.x + directions[choix][0];
-        int ny = pos.y+ directions[choix][1];
+        int ny = pos.y + directions[choix][1];
 
         if (labyrinthe.estLibre(nx, ny)) {
-            pos.x =nx ;
+            pos.x = nx;
             pos.y = ny;
         }
-
-        cooldown += 8;
+        cooldownDeplacement = 8;
     }
 
     public void Dash(Labyrinthe labyrinthe, Hero hero) {
         if (!estVivant()) return;
 
         if (etatDash == 2) {
-            cooldown++;
-            if (cooldown >= 30) {
+            cooldownPostDash++;
+            if (cooldownPostDash >= 30) {
                 etatDash = 0;
-                cooldown = 0;
+                cooldownPostDash = 0;
             }
             return;
         }
@@ -105,32 +95,21 @@ public class Monstre {
                 pos.x = nx;
                 pos.y = ny;
                 etapesDash++;
-
+                
                 if (pos.x == hero.getPos().x && pos.y == hero.getPos().y) {
-                    hero.subirDegatPhysique(degatFixe);
+                    hero.subirDegatPhysique(degatFixe, this);
                     etatDash = 2;
-                    cooldown = 0;
+                    cooldownPostDash = 0;
                 }
             } else {
                 etatDash = 2;
-                cooldown = 0;
+                cooldownPostDash = 0;
             }
 
             if (etapesDash >= 7) {
                 etatDash = 2;
-                cooldown = 0;
+                cooldownPostDash = 0;
             }
         }
     }
-
-    public int subirDegatPhysique(int coup) {
-        this.vie = Math.max(0, this.vie - coup);
-        return this.vie;
-    }
-
-    public int subirDegatMagique(int sort) {
-        this.cooldown+=sort/2;
-        return this.cooldown;
-    }
-
 }
