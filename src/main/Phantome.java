@@ -49,7 +49,7 @@ public class Phantome extends Personnage {
         int nx = pos.x + directions[choix][0];
         int ny = pos.y + directions[choix][1];
 
-        if (labyrinthe.estLibre(nx, ny)) {
+        if (labyrinthe.estLibrePhantome(nx, ny)) {
             pos.x = nx;
             pos.y = ny;
         }
