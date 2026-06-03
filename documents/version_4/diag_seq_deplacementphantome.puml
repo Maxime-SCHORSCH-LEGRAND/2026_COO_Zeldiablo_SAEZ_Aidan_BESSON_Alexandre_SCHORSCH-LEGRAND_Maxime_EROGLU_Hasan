@@ -7,6 +7,9 @@ participant "phantome : Phantome" as phantome
 participant "random : Random" as random
 participant "labyrinthe : Labyrinthe" as labyrinthe
 
+-> jeu : evoluer(c)
+activate jeu
+
 jeu -> phantome : deplacer(labyrinthe)
 activate phantome
 
@@ -18,18 +21,16 @@ deactivate phantome
 alt cooldown == 0
     phantome -> random : nextInt(4)
     activate random
-    random --> phantome : choix (int)
+    random --> phantome : int (choix)
     deactivate random
-
-    phantome -> phantome : calcul_nx_ny
 
     phantome -> labyrinthe : estLibrePhantome(nx, ny)
     activate labyrinthe
-    labyrinthe --> phantome : boolean
+    labyrinthe --> phantome : boolean (libre)
     deactivate labyrinthe
 
-    alt estLibrePhantome == true
-        phantome -> phantome : mise à jour pos.x et pos.y
+    alt libre == true
+        phantome -> phantome : pos.x = nx \n pos.y = ny
     end
 
     phantome -> phantome : cooldown = 4
@@ -37,4 +38,7 @@ end
 
 jeu <-- phantome
 deactivate phantome
+
+<-- jeu
+deactivate jeu
 @enduml

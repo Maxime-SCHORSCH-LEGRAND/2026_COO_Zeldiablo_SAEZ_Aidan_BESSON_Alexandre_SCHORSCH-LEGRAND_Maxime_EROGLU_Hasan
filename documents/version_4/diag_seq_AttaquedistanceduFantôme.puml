@@ -1,0 +1,67 @@
+
+@startuml
+autonumber
+hide footbox
+title Diagramme de Séquence - Attaque à distance du Fantôme
+
+participant "jeu : JeuPerso" as jeu
+participant "phantome : Phantome" as phantome
+participant "hero : Hero" as hero
+
+-> jeu : evoluer(c)
+activate jeu
+
+' Vérification si le fantôme est vivant
+jeu -> phantome : estVivant()
+activate phantome
+phantome --> jeu : boolean (true)
+deactivate phantome
+
+' Récupération des positions pour voir s'ils sont alignés
+jeu -> phantome : getPos()
+activate phantome
+phantome --> jeu : Position
+deactivate phantome
+
+jeu -> hero : getPos()
+activate hero
+hero --> jeu : Position
+deactivate hero
+
+alt memeLigne == true OU memeColonne == true
+    ' S'ils sont alignés, le fantôme lance son attaque
+    jeu -> phantome : attaque(hero, heroX, heroY)
+    activate phantome
+
+    phantome -> hero : estVivant()
+    activate hero
+    hero --> phantome : boolean (true)
+    deactivate hero
+
+    phantome -> hero : getPos()
+    activate hero
+    hero --> phantome : Position
+    deactivate hero
+
+    alt coordonnees valides
+        ' Le héros subit les dégâts
+        phantome -> hero : subirDegatPhysique(sort)
+        activate hero
+        hero --> phantome : int (vie)
+        deactivate hero
+    end
+
+    jeu <-- phantome
+    deactivate phantome
+
+else Héros et Fantôme non alignés
+    ' Sinon, le fantôme se déplace aléatoirement
+    jeu -> phantome : deplacer(labyrinthe)
+    activate phantome
+    jeu <-- phantome
+    deactivate phantome
+end
+
+<-- jeu
+deactivate jeu
+@enduml
