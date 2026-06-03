@@ -1,40 +1,35 @@
 @startuml
 
-actor Joueur
-participant "JeuPerso" as Jeu
-participant "Hero" as Hero
-participant "Labyrinthe" as Lab
-participant "PorteSortie" as Porte
-participant "Monstre" as Monstre
-participant "System" as Sys
 
-Joueur -> Jeu : evoluer(Commande c)
+participant "JeuPerso"
+participant "Hero"
+participant "Labyrinthe"
+participant "PorteSortie"
+participant "Monstre"
+participant "System"
+participant "Phantome"
 
-Jeu -> Hero : getPos()
-Hero --> Jeu : (x, y)
 
-Jeu -> Lab : estLibre(nx, ny)
-Lab --> Jeu : true/false
 
-Jeu -> Hero : deplacer(nx, ny)
-Hero --> Jeu : ok
 
-Jeu -> Porte : verifierCollision(hero)
-Porte -> Monstre : estVivant()
-Monstre --> Porte : false
 
-Porte -> Hero : estVivant()
-Hero --> Porte : true
 
-Porte --> Jeu : collisionOK / collisionKO
 
+"JeuPerso" -> Monstre : estVivant()
+Monstre --> "JeuPerso" : false
+
+JeuPerso -> Hero : estVivant()
+Hero --> "JeuPerso" : true
+
+"JeuPerso" -> "Phantome":estVivant()
+"Phantome"--> "JeuPerso":true
 alt hero sur porte ET monstre mort
-    Jeu -> Sys : print("VICTOIRE")
-    Sys --> Jeu : affichage OK
+    JeuPerso ->System : print("VICTOIRE")
+    System --> JeuPerso : victoire
 else
-    Jeu -> Jeu : continuer jeu
+    JeuPerso -> JeuPerso : continuer jeu
 end
 
-Jeu --> Joueur : frame suivante
+
 
 @enduml
