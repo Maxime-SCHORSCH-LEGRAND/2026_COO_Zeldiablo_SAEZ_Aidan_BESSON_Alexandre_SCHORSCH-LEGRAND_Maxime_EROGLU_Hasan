@@ -1,15 +1,40 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+actor Joueur
+participant "JeuPerso" as Jeu
+participant "Hero" as Hero
+participant "Labyrinthe" as Lab
+participant "PorteSortie" as Porte
+participant "Monstre" as Monstre
+participant "System" as Sys
 
-== Initialization ==
+Joueur -> Jeu : evoluer(Commande c)
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+Jeu -> Hero : getPos()
+Hero --> Jeu : (x, y)
 
-== Repetition ==
+Jeu -> Lab : estLibre(nx, ny)
+Lab --> Jeu : true/false
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Jeu -> Hero : deplacer(nx, ny)
+Hero --> Jeu : ok
+
+Jeu -> Porte : verifierCollision(hero)
+Porte -> Monstre : estVivant()
+Monstre --> Porte : false
+
+Porte -> Hero : estVivant()
+Hero --> Porte : true
+
+Porte --> Jeu : collisionOK / collisionKO
+
+alt hero sur porte ET monstre mort
+    Jeu -> Sys : print("VICTOIRE")
+    Sys --> Jeu : affichage OK
+else
+    Jeu -> Jeu : continuer jeu
+end
+
+Jeu --> Joueur : frame suivante
+
 @enduml
