@@ -21,7 +21,7 @@ public class JeuPerso implements Jeu {
         this.monstre = labyrinthe.getMonstre();
     }
 
-    @Override
+
     public void evoluer(Commande c) {
 
         int nx = hero.getPos().x;
@@ -92,7 +92,7 @@ public class JeuPerso implements Jeu {
         }
     }
 
-    @Override
+
     public boolean etreFini() {
         return !hero.estVivant();
     }
