@@ -35,13 +35,7 @@ public class Monstre {
         return vie > 0;
     }
 
-    public void subirDegats(int degats) {
-        vie -= degats;
 
-        if (vie < 0) {
-            vie = 0;
-        }
-    }
 
     public void deplacer(Labyrinthe labyrinthe) {
 
@@ -69,7 +63,7 @@ public class Monstre {
             pos.y = ny;
         }
 
-        cooldown = 8;
+        cooldown += 8;
     }
 
     public void Dash(Labyrinthe labyrinthe, Hero hero) {
@@ -135,8 +129,8 @@ public class Monstre {
     }
 
     public int subirDegatMagique(int sort) {
-        this.vie = Math.max(0, this.vie - sort);
-        return this.vie;
+        this.cooldown+=sort/2;
+        return this.cooldown;
     }
 
 }

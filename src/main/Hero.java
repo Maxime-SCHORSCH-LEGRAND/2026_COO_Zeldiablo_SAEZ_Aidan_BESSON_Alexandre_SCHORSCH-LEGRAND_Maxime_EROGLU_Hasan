@@ -25,7 +25,7 @@ public class Hero extends Personnage {
         if (monstre.getPos().x == tx &&
                 monstre.getPos().y == ty) {
 
-            monstre.subirDegats(5);
+            monstre.subirDegatPhysique(5);
             System.out.println("Touché ! Vie monstre : " + monstre.getVie());
 
         } else {
