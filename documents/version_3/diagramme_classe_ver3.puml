@@ -9,9 +9,7 @@ interface Jeu{
 }
 
 class Monstre{
--pos: Position
 -random: Random
--vie: int
 -cooldown: int
 -degatFixe: int
 -etatDash: int

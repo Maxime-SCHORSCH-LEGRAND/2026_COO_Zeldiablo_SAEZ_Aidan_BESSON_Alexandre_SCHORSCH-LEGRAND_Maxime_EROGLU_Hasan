@@ -18,18 +18,12 @@ public abstract class Personnage {
         return vie;
     }
 
-    public void subirdegat(int d){
-        this.vie -= d;
-        if (this.vie < 0) {
-            this.vie = 0;
-        }
-    }
     public boolean estVivant() {
         return vie > 0;
     }
 
-    public abstract int subirDegatPhysique(int coup);
+    public abstract int subirDegatPhysique(int coup, Personnage attaquant);
 
-    public abstract int subirDegatMagique(int sort);
+    public abstract int subirDegatMagique(int sort, Personnage attaquant);
 
 }
