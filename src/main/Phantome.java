@@ -47,7 +47,7 @@ public class Phantome extends Personnage {
     }
 
     /**
-     *methode qui lit le labyrinthe et permet au Phantome de s'y deplacer
+     * methode qui lit le labyrinthe et permet au Phantome de s'y deplacer
      * le Phantome traverse les murs au sein du labyrinthe mais n'en sort pas
      * @param labyrinthe
      */

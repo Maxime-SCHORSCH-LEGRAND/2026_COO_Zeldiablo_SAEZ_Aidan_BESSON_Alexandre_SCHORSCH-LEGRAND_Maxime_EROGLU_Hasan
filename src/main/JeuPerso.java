@@ -62,22 +62,26 @@ public class JeuPerso implements Jeu {
         }
 
         if (c.f) {
-            animX = hero.getPos().x - 1; animY = hero.getPos().y;
+            animX = hero.getPos().x - 1;
+            animY = hero.getPos().y;
             hero.attaquer(trouverCible(animX, animY), -1, 0);
             animTimer = 10;
         }
         if (c.t) {
-            animX = hero.getPos().x; animY = hero.getPos().y - 1;
+            animX = hero.getPos().x;
+            animY = hero.getPos().y - 1;
             hero.attaquer(trouverCible(animX, animY), 0, -1);
             animTimer = 10;
         }
         if (c.g) {
-            animX = hero.getPos().x; animY = hero.getPos().y + 1;
+            animX = hero.getPos().x;
+            animY = hero.getPos().y + 1;
             hero.attaquer(trouverCible(animX, animY), 0, 1);
             animTimer = 10;
         }
         if (c.h) {
-            animX = hero.getPos().x + 1; animY = hero.getPos().y;
+            animX = hero.getPos().x + 1;
+            animY = hero.getPos().y;
             hero.attaquer(trouverCible(animX, animY), 1, 0);
             animTimer = 10;
         }
@@ -121,8 +125,6 @@ public class JeuPerso implements Jeu {
             }
         }
     }
-
-    //
 
     public boolean etreFini() {
         return hero.estMort();
