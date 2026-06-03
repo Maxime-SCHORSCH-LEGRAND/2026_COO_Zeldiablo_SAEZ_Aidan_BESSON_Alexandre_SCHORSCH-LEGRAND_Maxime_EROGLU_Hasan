@@ -1,5 +1,5 @@
 @startuml
-skinparam style strictuml
+
 autonumber
 
 actor Joueur
