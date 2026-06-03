@@ -4,8 +4,19 @@ import java.util.Random;
 
 public class Phantome extends Personnage {
 
+    /**
+     * attribut sort du phantome
+     */
     private static int sort = 1;
+
+    /**
+     * attribut aleatoire du phantome
+     */
     private Random random = new Random();
+
+    /**
+     * attribut du compteur du phantome
+     */
     private int cooldown = 0;
 
     /**
@@ -60,9 +71,12 @@ public class Phantome extends Personnage {
         }
         cooldown = 4;
     }
-    /** fait perdre des pv au phantome
-     *
-     * **/
+
+    /**
+     * mathode qui permet de subir des degats quand le phantome subit un coup
+     * @param coup
+     * @return
+     */
     public  int subirDegatPhysique(int coup){
         this.vie-=coup;
         return this.vie;

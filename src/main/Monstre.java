@@ -109,7 +109,12 @@ public class Monstre extends Personnage {
     }
 
 
-
+    /**
+     * methode qui permet au monstre de dash
+     * ce dash met des degats au hero
+     * @param labyrinthe
+     * @param hero
+     */
     public void Dash(Labyrinthe labyrinthe, Hero hero) {
         if (!estVivant()) return;
 
