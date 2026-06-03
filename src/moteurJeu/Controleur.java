@@ -74,10 +74,6 @@ public class Controleur implements KeyListener {
 				this.commandeARetourner.h = true;
 				break;
 
-			case 'a':
-				this.commandeEnCours.a = true;
-				this.commandeARetourner.a = true;
-				break;
 		}
 	}
 
@@ -123,9 +119,6 @@ public class Controleur implements KeyListener {
 				this.commandeEnCours.h = false;
 				break;
 
-			case 'a':
-				this.commandeEnCours.a = false;
-				break;
 		}
 	}
 

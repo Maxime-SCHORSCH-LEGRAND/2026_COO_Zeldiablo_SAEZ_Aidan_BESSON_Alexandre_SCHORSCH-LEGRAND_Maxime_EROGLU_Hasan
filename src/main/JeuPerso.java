@@ -39,15 +39,6 @@ public class JeuPerso implements Jeu {
         int nx = hero.getPos().x;
         int ny = hero.getPos().y;
 
-        if (c.a) {
-            if (!toucheAPressee) {
-                hero.alterModeAttaque();
-                toucheAPressee = true;
-            }
-        } else {
-            toucheAPressee = false;
-        }
-
         if (c.gauche) {
             nx--;
             direction = 1;
