@@ -5,7 +5,7 @@ public class Hero extends Personnage {
     private int degat = 5;
 
     public Hero(int x, int y, int vie) {
-        super(x, y, vie);
+        super(x, y, 30);
     }
 
     public void deplacer(int x, int y) {
@@ -34,13 +34,12 @@ public class Hero extends Personnage {
     }
 
 
-    public void perdreVie(int degats) {
-        vie -= degats;
-
+    public void perdreVie(int degatFixe) {
+        vie -= degatFixe;
         if (vie < 0) {
             vie = 0;
         }
-        System.out.println("Le héros a pris " + degats + " dégâts ! Vie restante : " + this.vie);
+        System.out.println("Le héros a pris " + degatFixe + " dégâts ! Vie restante : " + this.vie);
     }
 
     public void Charge(int direction, Labyrinthe lab, Monstre monstre) {
@@ -69,15 +68,12 @@ public class Hero extends Personnage {
             this.deplacer(caseSuivanteX, caseSuivanteY);
         }
     }
+
     public int subirDegatPhysique(int coup) {
-        //this.vie = Math.max(0, this.vie - coup);
-        //return this.vie;
         return 1;
     }
 
     public int subirDegatMagique(int sort) {
-        //this.vie = Math.max(0, this.vie - sort);
-        //return this.vie;
         return 1;
     }
 }
