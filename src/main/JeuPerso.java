@@ -24,8 +24,8 @@ public class JeuPerso implements Jeu {
     @Override
     public void evoluer(Commande c) {
 
-        int nx = hero.getPos().x;
-        int ny = hero.getPos().y;
+        int nx = hero.getPos().getX();
+        int ny = hero.getPos().getY();
 
         if (c.gauche) {
             nx--;
