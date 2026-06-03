@@ -18,8 +18,7 @@ public abstract class Personnage {
         return vie > 0;
     }
     // fait perdre les point de vie
-    public abstract int subirDegatPhysique(int coup, Personnage attaquant);
-    // fait perdre les points de vie
-    public abstract int subirDegatMagique(int sort, Personnage attaquant);
+    public abstract int subirDegatPhysique(int coup);
+
 
 }
