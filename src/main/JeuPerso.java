@@ -8,6 +8,7 @@ public class JeuPerso implements Jeu {
     private Labyrinthe labyrinthe;
     private Hero hero;
     private Monstre monstre;
+    private Phantome phantome;
     private int direction = 4;
 
 
@@ -19,6 +20,7 @@ public class JeuPerso implements Jeu {
         this.labyrinthe = labyrinthe;
         this.hero = labyrinthe.getHero();
         this.monstre = labyrinthe.getMonstre();
+        this.phantome = labyrinthe.getPhantome();
     }
 
     @Override
@@ -121,5 +123,8 @@ public class JeuPerso implements Jeu {
         return animTimer;
     }
 
+    public Phantome getPhantome(){
+        return phantome;
+    }
 
 }
