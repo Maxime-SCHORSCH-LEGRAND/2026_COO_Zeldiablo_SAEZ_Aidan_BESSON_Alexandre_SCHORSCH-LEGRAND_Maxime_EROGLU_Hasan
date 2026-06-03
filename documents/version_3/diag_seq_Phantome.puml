@@ -1,15 +1,35 @@
 @startuml
-'https://plantuml.com/sequence-diagram
-
+skinparam style strictuml
 autonumber
 
-title: Phantome
+actor Joueur
+participant "jeu : JeuPerso" as JP
+participant "phantome : Phantome" as Ph
+participant "labyrinthe : Labyrinthe" as Lab
+participant "hero : Hero" as H
 
-MainPerso -> JeuPerso: new JeuPerso(lab)
-JeuPerso --> Monstre: Authentication Response
+Joueur -> JP : evoluer(commande)
 
-== Repetition ==
+alt phantome != null && phantome.estVivant()
+    JP -> Ph : getPos()
+    return positionFantome
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-@enduml
+    JP -> H : getPos()
+    return positionHero
+
+    alt memeLigne || memeColonne
+        ' L'attaque est gérée ici sans détails
+    else Sinon
+        JP -> Ph : deplacer(labyrinthe)
+        activate Ph
+
+        alt cooldown > 0
+            ' cooldown--
+        else cooldown == 0
+            Ph -> Lab : estLibrePhantome(nx, ny)
+            return libre
+        end
+        deactivate Ph
+    end
+end
+@endum
