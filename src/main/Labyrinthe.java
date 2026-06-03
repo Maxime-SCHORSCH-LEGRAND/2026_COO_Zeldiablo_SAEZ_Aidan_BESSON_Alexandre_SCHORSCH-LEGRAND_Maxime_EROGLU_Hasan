@@ -11,6 +11,7 @@ public class Labyrinthe {
 
     private Hero hero;
     private Monstre monstre;
+    private Phantome phantome;
 
     public Labyrinthe(String fichier) throws IOException {
 
@@ -38,6 +39,11 @@ public class Labyrinthe {
 
                 if (c == 'M') {
                     monstre = new Monstre(x, y, 20);
+                    grille[y][x] = '.';
+                }
+
+                if (c == 'P') {
+                    phantome = new Phantome(x, y, 20);
                     grille[y][x] = '.';
                 }
             }
