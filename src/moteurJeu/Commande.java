@@ -14,7 +14,6 @@ public class Commande {
 	public boolean t;
 	public boolean g;
 	public boolean h;
-	public boolean a;
 
 
 
@@ -33,8 +32,6 @@ public class Commande {
 		this.gauche = commandeACopier.gauche;
 		this.droite = commandeACopier.droite;
 		this.espace = commandeACopier.espace;
-		this.a = commandeACopier.a;
-
 
 		this.attaque = commandeACopier.attaque;
 	}

@@ -4,7 +4,13 @@ public abstract class Personnage {
 
     protected Position pos;
     protected int vie;
-    // creer un nouveau personnages avec une position et une certainne quantité de point de vie
+
+    /**
+     * constructeur du Personnage
+     * @param x
+     * @param y
+     * @param vie
+     */
     public Personnage(int x, int y, int vie) {
         this.pos = new Position(x, y);
         this.vie = vie;
@@ -18,8 +24,7 @@ public abstract class Personnage {
         return vie > 0;
     }
     // fait perdre les point de vie
-    public abstract int subirDegatPhysique(int coup, Personnage attaquant);
-    // fait perdre les points de vie
-    public abstract int subirDegatMagique(int sort, Personnage attaquant);
+    public abstract int subirDegatPhysique(int coup);
+
 
 }

@@ -19,33 +19,7 @@ public class Phantome extends Personnage {
         super(x, y, vie);
     }
 
-    /**
-     * methode qui lit les degats du coup et l'attquant et renvoie les degats physiques au Phantome
-     * le hero ne peut pas faire d'attaque physique sur le Phantome et se fait contrer
-     * @param coup
-     * @param attaquant
-     * @return
-     */
-    public int subirDegatPhysique(int coup, Personnage attaquant) {
-        System.out.println("L'attaque physique traverse le Phantome !");
-        if (attaquant != null) {
-            attaquant.subirDegatPhysique(coup, this);
-        }
-        return this.vie;
-    }
 
-    /**
-     * methode qui lit les degats du sort et l'attquant et renvoie les degats magiques au Phantome
-     * @param sort
-     * @param attaquant
-     * @return
-     */
-    public int subirDegatMagique(int sort, Personnage attaquant) {
-        this.vie -= sort;
-        if (this.vie < 0) this.vie = 0;
-        System.out.println("Le Phantome touché par la magie ! Vie restante : " + this.vie);
-        return this.vie;
-    }
 
     /**
      * methode qui lit la cible et sa postion et renvoie les degats fait
@@ -53,11 +27,11 @@ public class Phantome extends Personnage {
      * @param dx
      * @param dy
      */
-    public void attaqueMagique(Personnage cible, int dx, int dy){
+    public void attaque(Personnage cible, int dx, int dy){
         if (cible == null || !cible.estVivant()) return;
 
         if (cible.getPos().x == dx && cible.getPos().y == dy) {
-            cible.subirDegatMagique(sort, this);
+            cible.subirDegatPhysique(sort);
         }
     }
 
@@ -85,5 +59,12 @@ public class Phantome extends Personnage {
             pos.y = ny;
         }
         cooldown = 4;
+    }
+    /** fait perdre des pv au phantome
+     *
+     * **/
+    public  int subirDegatPhysique(int coup){
+        this.vie-=coup;
+        return this.vie;
     }
 }

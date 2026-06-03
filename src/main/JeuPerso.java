@@ -39,15 +39,6 @@ public class JeuPerso implements Jeu {
         int nx = hero.getPos().x;
         int ny = hero.getPos().y;
 
-        if (c.a) {
-            if (!toucheAPressee) {
-                hero.alterModeAttaque();
-                toucheAPressee = true;
-            }
-        } else {
-            toucheAPressee = false;
-        }
-
         if (c.gauche) {
             nx--;
             direction = 1;
@@ -72,7 +63,7 @@ public class JeuPerso implements Jeu {
             hero.deplacer(nx, ny);
         }
 
-        // Gestion des attaques directionnelles du héros
+        // Gestion des attaques directionnelles du hÃ©ros
         if (c.f) {
             animX = hero.getPos().x - 1; animY = hero.getPos().y;
             hero.attaquer(trouverCible(animX, animY), -1, 0);
@@ -110,7 +101,7 @@ public class JeuPerso implements Jeu {
             boolean memeColonne = phantome.getPos().x == hero.getPos().x;
 
             if (memeLigne || memeColonne) {
-                phantome.attaqueMagique(hero, hero.getPos().x, hero.getPos().y);
+                phantome.attaque(hero, hero.getPos().x, hero.getPos().y);
             } else {
                 phantome.deplacer(labyrinthe);
             }
@@ -119,19 +110,14 @@ public class JeuPerso implements Jeu {
         if (c.espace) {
             hero.Charge(direction, labyrinthe, monstre);
         }
+
         Position sortie = labyrinthe.getSortie();
 
-        if (sortie != null
-                && hero.getPos().x == sortie.x
-                && hero.getPos().y == sortie.y) {
+        if (sortie != null && hero.getPos().x == sortie.x && hero.getPos().y == sortie.y) {
 
-            boolean monstreMort =
-                    labyrinthe.getMonstre() == null
-                            || !labyrinthe.getMonstre().estVivant();
+            boolean monstreMort = labyrinthe.getMonstre() == null || !labyrinthe.getMonstre().estVivant();
 
-            boolean fantomeMort =
-                    labyrinthe.getPhantome() == null
-                            || !labyrinthe.getPhantome().estVivant();
+            boolean fantomeMort = labyrinthe.getPhantome() == null || !labyrinthe.getPhantome().estVivant();
 
             if (monstreMort && fantomeMort) {
                 System.out.println("VICTOIRE !");
