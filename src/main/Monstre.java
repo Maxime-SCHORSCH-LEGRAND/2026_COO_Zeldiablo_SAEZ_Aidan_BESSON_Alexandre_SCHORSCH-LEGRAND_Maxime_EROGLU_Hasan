@@ -18,7 +18,7 @@ public class Monstre extends Personnage {
     private int dashX = 0;
     private int dashY = 0;
     private int etapesDash = 0;
-    // creer un nouveau monstre
+
     public Monstre(int x, int y, int vie) {
         super(x,y,vie);
     }
@@ -27,13 +27,13 @@ public class Monstre extends Personnage {
         return pos;
     }
 
-
+    public int getVie() {
+        return vie;
+    }
 
     public boolean estVivant() {
         return vie > 0;
     }
-
-
 
     public void deplacer(Labyrinthe labyrinthe) {
         if (!estVivant()) return;
@@ -106,6 +106,8 @@ public class Monstre extends Personnage {
         cooldown += 8;
     }
 
+
+
     public void Dash(Labyrinthe labyrinthe, Hero hero) {
         if (!estVivant()) return;
 
@@ -163,12 +165,12 @@ public class Monstre extends Personnage {
         }
     }
 
-    public int subirDegatPhysique(int coup, Personnage attaquant){
+    public int subirDegatPhysique(int coup,Personnage attaquant) {
         this.vie = Math.max(0, this.vie - coup);
         return this.vie;
     }
 
-    public int subirDegatMagique(int sort,Personnage attaquant) {
+    public int subirDegatMagique(int sort,Personnage attaquant ) {
         this.cooldown+=sort/2;
         return this.cooldown;
     }

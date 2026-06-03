@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+title deplacement inteligent
+
+participant mainPerso
+
+participant monstre
+
+participant joueur
+
+participant Labyrinthe
+
+mainPerso -> monstre:deplacer()
+monstre -> joueur:getPos().x
+monstre -> joueur:getPos().y
+alt monstre sur cordonées x y chercher
+monstre -> Labyrinthe:regarde les cases autour pour savoir si c'est du chemin ou du mur
+Labyrinthe -->monstre
+monstre -> Labyrinthe:parcours les cases et les range dans un tableau
+Labyrinthe -->monstre
+monstre -> Labyrinthe:range les ancienne cases dans un tableau pour se souvenir du chemin
+Labyrinthe -->monstre
+end
+monstre-->mainPerso:le monstre va jusqu'au joueur
+
+
+@enduml
