@@ -9,16 +9,51 @@ public class JeuPerso implements Jeu {
      * attribut labyrinthe du jeu
      */
     private Labyrinthe labyrinthe;
+
+    /**
+     * attribut hero du jeu
+     */
     private Hero hero;
+
+    /**
+     * attribut monstre du jeu
+     */
     private Monstre monstre;
+
+    /**
+     * attribut phantome du jeu
+     */
     private Phantome phantome;
+
+    /**
+     * attribut fixe direction du jeu
+     */
     private int direction = 4;
 
+    /**
+     * attribut animation vertical du jeu
+     */
     private int animX = -1;
+
+    /**
+     * attribut animation horizontale du jeu
+     */
     private int animY = -1;
+
+    /**
+     * attribut fixe aniTimer du jeu
+     */
     private int animTimer = 0;
+
+    /**
+     * attribut victoire du jeu
+     */
     private boolean victoire = false;
 
+    /**
+     * constructeur du JeuPerso
+     * @param labyrinthe
+     */
     public JeuPerso(Labyrinthe labyrinthe) {
         this.labyrinthe = labyrinthe;
         this.hero = labyrinthe.getHero();
@@ -26,7 +61,13 @@ public class JeuPerso implements Jeu {
         this.phantome = labyrinthe.getPhantome();
     }
 
-    private Personnage trouverCible(int x, int y) {
+    /**
+     * methode qui permet de trouver la cible
+     * @param x
+     * @param y
+     * @return
+     */
+    public Personnage trouverCible(int x, int y) {
         if (monstre != null && monstre.estVivant() && monstre.getPos().x == x && monstre.getPos().y == y) {
             return monstre;
         }
@@ -36,6 +77,11 @@ public class JeuPerso implements Jeu {
         return null;
     }
 
+    /**
+     * methode qui permet de faire evoluer le labyrinth dans le jeu
+     * @param c
+     * commande utilisateur
+     */
     public void evoluer(Commande c) {
         int nx = hero.getPos().x;
         int ny = hero.getPos().y;
