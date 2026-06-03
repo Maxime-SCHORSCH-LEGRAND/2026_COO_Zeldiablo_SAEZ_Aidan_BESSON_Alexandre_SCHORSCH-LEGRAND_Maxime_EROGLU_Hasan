@@ -5,6 +5,9 @@ import moteurJeu.Jeu;
 
 public class JeuPerso implements Jeu {
 
+    /**
+     * attribut labyrinthe du jeu
+     */
     private Labyrinthe labyrinthe;
     private Hero hero;
     private Monstre monstre;
@@ -126,34 +129,66 @@ public class JeuPerso implements Jeu {
         }
     }
 
+    /**
+     * methode qui permet de quitter le jeu quand le hero est mort
+     * @return
+     */
     public boolean etreFini() {
         return hero.estMort();
     }
 
+    /**
+     * methode qui permet de renvoyer le labyrinthe du jeu
+     * @return
+     */
     public Labyrinthe getLabyrinthe() {
         return labyrinthe;
     }
 
+    /**
+     * methode qui renvoie le hero du jeu
+     * @return
+     */
     public Hero getHero() {
         return hero;
     }
 
+    /**
+     * methode qui permet de renvoyer lire le monstre du jeu
+     * @return
+     */
     public Monstre getMonstre() {
         return monstre;
     }
 
+    /**
+     * methode qui permet de lire le phantome duiu jeu
+     * @return
+     */
     public Phantome getPhantome() {
         return phantome;
     }
 
+    /**
+     * qui permet de lire les animations verticale du jeu
+     * @return
+     */
     public int getAnimX() {
         return animX;
     }
 
+    /**
+     * methode qui permet de lire les animations horizontales du jeu
+     * @return
+     */
     public int getAnimY() {
         return animY;
     }
 
+    /**
+     * methode qui permet de lire le temps de l'animation du jeu
+     * @return
+     */
     public int getAnimTimer() {
         return animTimer;
     }
