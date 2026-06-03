@@ -1,0 +1,134 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class MainPerso
+
+interface Jeu{
++evoluer(Commande commandeUser)
++etreFini(): boolean
+}
+
+class Monstre{
+-pos: Position
+-random: Random
+-vie: int
+-cooldown: int
+-degatFixe: int
+-etatDash: int
+-dashX: int
+-dashY: int
+-etapesDash: int
++Monstre(int x , int y , int vie)
++getPos(): Position
++deplacer(Labyrinthe labyrinthe)
++subirDegats(int degats)
++Dash(Labyrinthe labyrinthe, Hero hero)
++subirDegatPhysique(int coup): int
++subirDegatMagique(int sort): int
++getVie():int
++estVivant():boolean
+}
+
+class Phantome{
+-sort: int
+-random: Random
+-cooldown: int
++Phantome(int x, int y, int vie)
++subirDegatPhysique(int coup): int
++subirDegatMagique(int sort): int
++attaquer(Personnage cible, int dx, int dy)
++deplacer(Labyrinthe labyrinthe)
+}
+
+abstract Personnage{
+#pos: Position
+#vie: int
++Personnage(int x, int y, int vie)
++getPos(): Position
++getVie(): int
++subirdegat(int d)
++estVivant(): boolean
++ {abstract} subirDegatPhysique(int coup): int
++ {abstract} subirDegatMagique(int sort): int
+}
+
+class Hero{
+-degat: int
++Hero(int x , int y , int vie)
++getPos(): Position
++deplacer(int x , int y)
++attaquer(Monstre monstre, int dx, int dy)
++perdreVie(int degatFixe)
++Charge(int direction, Labyrinthe lab, Monstre monstre)
++subirDegatPhysique(int coup): int
++subirDegatMagique(int sort): int
+}
+
+class Labyrinthe{
+-grille: char[][]
+-hero: Hero
+-monstre: Monstre
+-phantome: Phantome
++Labyrinthe(String fichier)
++estLibre(int x, int y): boolean
++estLibrePhantome(int x, int y): boolean
++getGrille(): char[][]
++getHero(): Hero
++getMonstre(): Monstre
++getPhantome(): Phantome
+}
+
+class LabyrintheDessin{
+-jeu: JeuPerso
++LabyrintheDessin(JeuPerso j)
++dessiner(BufferedImage image)
+}
+
+interface DessinJeu{
++dessiner(BufferedImage im)
+}
+
+class JeuPerso{
+-labyrinthe: Labyrinthe
+-hero: Hero
+-monstre: Monstre
+-phantome: Phantome
+-direction: int
+-animX: int
+-animY: int
+-animTimer: int
++JeuPerso(Labyrinthe labyrinthe)
++evoluer(Commande c)
++etreFini(): boolean
++getLabyrinthe(): Labyrinthe
++getHero(): Hero
++getMonstre(): Monstre
++getAnimY():int
++getAnimX():int
++getAnimTimer():int
++getPhantome(): Phantome
+}
+
+class Position{
++x: int
++y: int
++getX(): int
++getY(): int
+}
+
+Hero --|> Personnage
+Monstre--|> Personnage
+Phantome --|> Personnage
+Personnage --> MainPerso
+Labyrinthe --> MainPerso
+
+Position<--Personnage
+JeuPerso-->Hero
+
+JeuPerso..>Jeu
+LabyrintheDessin-->MainPerso
+JeuPerso-->MainPerso
+
+DessinJeu<.. LabyrintheDessin
+
+@enduml
