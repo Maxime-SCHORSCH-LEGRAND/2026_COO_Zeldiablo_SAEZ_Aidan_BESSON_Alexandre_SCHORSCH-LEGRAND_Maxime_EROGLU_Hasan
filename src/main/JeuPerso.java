@@ -86,8 +86,19 @@ public class JeuPerso implements Jeu {
             animTimer--;
         }
 
+        Monstre monstre = labyrinthe.getMonstre();
+
         if (monstre != null && monstre.estVivant()) {
-            monstre.deplacer(labyrinthe);
+
+            boolean memeLigne = monstre.getPos().y == hero.getPos().y;
+
+            boolean memeColonne = monstre.getPos().x == hero.getPos().x;
+
+            if (memeLigne || memeColonne) {
+                monstre.Dash(labyrinthe, hero);
+            } else {
+                monstre.deplacer(labyrinthe);
+            }
         }
 
         if (phantome != null && phantome.estVivant()) {
