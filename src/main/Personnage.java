@@ -15,15 +15,28 @@ public abstract class Personnage {
         this.pos = new Position(x, y);
         this.vie = vie;
     }
-    // renvoie la position
+
+    /**
+     * methode qui renvoie la position du personnage
+     * @return
+     */
     public Position getPos() {
         return pos;
     }
-    // renvoie si la cible est vivante ou pas
+
+    /**
+     * methode qui permet de savoir si la personnage et en vie
+     * @return
+     */
     public boolean estVivant() {
         return vie > 0;
     }
-    // fait perdre les point de vie
+
+    /**
+     * methode qui lit les degats d'un coup et les fait subir au personnage
+     * @param coup
+     * @return
+     */
     public abstract int subirDegatPhysique(int coup);
 
 

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Phantome extends Personnage {
 
-    private static int sort = 6;
+    private static int sort = 1;
     private Random random = new Random();
     private int cooldown = 0;
 

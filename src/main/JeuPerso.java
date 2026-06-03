@@ -16,8 +16,6 @@ public class JeuPerso implements Jeu {
     private int animTimer = 0;
     private boolean victoire = false;
 
-    private boolean toucheAPressee = false;
-
     public JeuPerso(Labyrinthe labyrinthe) {
         this.labyrinthe = labyrinthe;
         this.hero = labyrinthe.getHero();
@@ -63,7 +61,6 @@ public class JeuPerso implements Jeu {
             hero.deplacer(nx, ny);
         }
 
-        // Gestion des attaques directionnelles du hÃ©ros
         if (c.f) {
             animX = hero.getPos().x - 1; animY = hero.getPos().y;
             hero.attaquer(trouverCible(animX, animY), -1, 0);
@@ -87,7 +84,6 @@ public class JeuPerso implements Jeu {
 
         if (animTimer > 0) animTimer--;
 
-        // Comportement du Monstre
         if (monstre != null && monstre.estVivant()) {
             if (monstre.getPos().y == hero.getPos().y || monstre.getPos().x == hero.getPos().x) {
                 monstre.Dash(labyrinthe, hero);

@@ -15,22 +15,28 @@ public class Monstre extends Personnage {
     private int dashY = 0;
     private int etapesDash = 0;
 
+    /**
+     * constructeur du Monstre
+     * @param x
+     * @param y
+     * @param vie
+     */
     public Monstre(int x, int y, int vie) {
         super(x,y,vie);
     }
 
+    /**
+     * methode qui lit la postion du Monstre
+     * @return
+     */
     public Position getPos() {
         return pos;
     }
 
-    public int getVie() {
-        return vie;
-    }
-
-    public boolean estVivant() {
-        return vie > 0;
-    }
-
+    /**
+     * methode qui lit le Labyrinthe et de deplacer le monstre en son sein
+     * @param labyrinthe
+     */
     public void deplacer(Labyrinthe labyrinthe) {
         if (!estVivant()) return;
 
