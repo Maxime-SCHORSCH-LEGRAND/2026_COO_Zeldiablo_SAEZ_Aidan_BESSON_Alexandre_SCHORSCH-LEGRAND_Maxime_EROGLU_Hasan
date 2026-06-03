@@ -28,5 +28,8 @@ public abstract class Personnage {
         return vie > 0;
     }
 
+    public abstract int subirDegatPhysique(int coup);
+
+    public abstract int subirDegatMagique(int sort);
 
 }

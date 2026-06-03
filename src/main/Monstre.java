@@ -127,5 +127,14 @@ public class Monstre {
             }
         }
     }
+    public int subirDegatPhysique(int coup) {
+        this.vie = Math.max(0, this.vie - coup);
+        return this.vie;
+    }
+
+    public int subirDegatMagique(int sort) {
+        this.vie = Math.max(0, this.vie - sort);
+        return this.vie;
+    }
 
 }
