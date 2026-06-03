@@ -1,7 +1,7 @@
 @startuml
 
 
-
+title Monstre
 participant MainPerso
 participant Labyrinthe
 participant Hero

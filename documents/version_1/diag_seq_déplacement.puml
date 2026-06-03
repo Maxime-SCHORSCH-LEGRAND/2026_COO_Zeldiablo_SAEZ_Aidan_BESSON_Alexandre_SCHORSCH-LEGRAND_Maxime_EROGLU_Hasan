@@ -5,6 +5,7 @@ autonumber
 
 
 @startuml
+title déplacement
 autonumber
 
 Main -> JeuPerso: initialisation()
