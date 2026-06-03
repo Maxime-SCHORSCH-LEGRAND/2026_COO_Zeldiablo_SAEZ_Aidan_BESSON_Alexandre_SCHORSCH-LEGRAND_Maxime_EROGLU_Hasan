@@ -71,12 +71,13 @@ public class Monstre {
 
         cooldown = 8;
     }
+
     public void Dash(Labyrinthe labyrinthe, Hero hero) {
         if (!estVivant()) return;
 
         if (etatDash == 2) {
             cooldown++;
-            if (cooldown >= 120) {
+            if (cooldown >= 30) {
                 etatDash = 0;
                 cooldown = 0;
             }
@@ -121,12 +122,13 @@ public class Monstre {
                 cooldown = 0;
             }
 
-            if (etapesDash >= 3) {
+            if (etapesDash >= 7) {
                 etatDash = 2;
                 cooldown = 0;
             }
         }
     }
+
     public int subirDegatPhysique(int coup) {
         this.vie = Math.max(0, this.vie - coup);
         return this.vie;

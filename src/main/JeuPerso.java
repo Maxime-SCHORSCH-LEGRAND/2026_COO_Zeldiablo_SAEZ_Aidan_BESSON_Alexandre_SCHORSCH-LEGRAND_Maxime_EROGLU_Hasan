@@ -8,7 +8,6 @@ public class JeuPerso implements Jeu {
     private Labyrinthe labyrinthe;
     private Hero hero;
     private Monstre monstre;
-    private Phantome phantome;
     private int direction = 4;
 
 
@@ -20,7 +19,6 @@ public class JeuPerso implements Jeu {
         this.labyrinthe = labyrinthe;
         this.hero = labyrinthe.getHero();
         this.monstre = labyrinthe.getMonstre();
-        this.phantome = labyrinthe.getPhantome();
     }
 
     @Override
@@ -89,11 +87,6 @@ public class JeuPerso implements Jeu {
         if (monstre != null && monstre.estVivant()) {
             monstre.deplacer(labyrinthe);
         }
-
-        if (phantome != null && phantome.estVivant()) {
-            phantome.deplacer(labyrinthe);
-        }
-
         if (c.espace) {
             hero.Charge(direction, labyrinthe, monstre);
         }
@@ -126,10 +119,6 @@ public class JeuPerso implements Jeu {
 
     public int getAnimTimer() {
         return animTimer;
-    }
-
-    public Phantome getPhantome(){
-        return phantome;
     }
 
 

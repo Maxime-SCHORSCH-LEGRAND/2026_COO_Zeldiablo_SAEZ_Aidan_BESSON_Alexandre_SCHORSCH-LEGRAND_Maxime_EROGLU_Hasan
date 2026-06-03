@@ -40,6 +40,7 @@ public class Hero extends Personnage {
         if (vie < 0) {
             vie = 0;
         }
+        System.out.println("Le héros a pris " + degats + " dégâts ! Vie restante : " + this.vie);
     }
 
     public void Charge(int direction, Labyrinthe lab, Monstre monstre) {
