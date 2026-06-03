@@ -10,14 +10,12 @@ autonumber
 
 Main -> JeuPerso: initialisation()
 JeuPerso -> Labyrinthe: creation()
+Joueur -> JeuPerso: Touche ZQSD
+JeuPerso->Hero:déplacer()
 
 
-JeuPerso -> Labyrinthe: getCoordonneesVides()
-Labyrinthe --> JeuPerso: x, y
 
 
-JeuPerso -> Monstre: new Monstre(x, y)
-JeuPerso <-- Monstre:
-JeuPerso -> JeuPerso: definir_monstre()
+
 
 @enduml

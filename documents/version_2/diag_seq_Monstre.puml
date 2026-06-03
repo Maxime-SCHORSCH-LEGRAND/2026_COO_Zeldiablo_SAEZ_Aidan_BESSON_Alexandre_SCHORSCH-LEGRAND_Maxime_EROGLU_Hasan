@@ -13,13 +13,12 @@ participant MoteurGraphique
 
 
 
-MainPerso -> Labyrinthe : new Labyrinthe(labyrinthe.txt)
+MainPerso -> Labyrinthe : création labyrinthe
 
 Labyrinthe -> Hero : création héros (x,y,PV)
 Labyrinthe -> Monstre : création monstre (x,y,PV)
 
-MainPerso -> JeuPerso : new JeuPerso(labyrinthe)
-MainPerso -> MoteurGraphique : lancerJeu()
+
 
 
 
