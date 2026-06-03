@@ -1,11 +1,37 @@
 @startuml
-autonumber
+title Charge du héro
+participant Hero
+participant Labyrinthe
+participant Monstre
 
-Utilisateur -> Controleur : appuie sur espace
-Controleur -> JeuPerso : evoluer(commande)
-JeuPerso -> Hero : charger(labyrinthe, dx, dy)
-  loop [i de 1 à 3, case libre et pas de monstre]
-    Hero -> Labyrinthe : estLibre(nx, ny)
-    Labyrinthe --> Hero : true
-    Hero -> Hero : deplacer(nx, ny)
-  end
+Hero -> Hero : Charge(direction, lab, monstre)
+
+loop Jusqu'à 3 cases
+
+    Hero -> Labyrinthe : estLibre(x,y)
+    Labyrinthe --> Hero : true / false
+
+    alt Mur rencontré
+        Hero --> Hero : arrêt de la charge
+    else Case libre
+
+        Hero -> Monstre : estVivant()
+        Monstre --> Hero : true / false
+
+        alt Monstre présent sur la case
+            Hero -> Monstre : getPos()
+            Monstre --> Hero : position
+            Hero --> Hero : arrêt de la charge
+
+        else Pas de monstre
+            Hero -> Hero : deplacer(x,y)
+            Hero --> Hero : nouvelle position
+        end
+
+    end
+
+end
+
+Hero --> Hero : fin Charge()
+
+@enduml

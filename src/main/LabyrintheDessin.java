@@ -88,6 +88,18 @@ public class LabyrintheDessin implements DessinJeu {
                     TAILLE
             );
         }
+        Position sortie = jeu.getLabyrinthe().getSortie();
+
+        if (sortie != null) {
+            g.setColor(Color.GREEN);
+
+            g.fillRect(
+                    sortie.x * TAILLE,
+                    sortie.y * TAILLE,
+                    TAILLE,
+                    TAILLE
+            );
+        }
 
         g.dispose();
     }

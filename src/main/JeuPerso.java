@@ -14,6 +14,7 @@ public class JeuPerso implements Jeu {
     private int animX = -1;
     private int animY = -1;
     private int animTimer = 0;
+    private boolean victoire = false;
 
     private boolean toucheAPressee = false;
 
@@ -118,11 +119,31 @@ public class JeuPerso implements Jeu {
         if (c.espace) {
             hero.Charge(direction, labyrinthe, monstre);
         }
+        Position sortie = labyrinthe.getSortie();
+
+        if (sortie != null
+                && hero.getPos().x == sortie.x
+                && hero.getPos().y == sortie.y) {
+
+            boolean monstreMort =
+                    labyrinthe.getMonstre() == null
+                            || !labyrinthe.getMonstre().estVivant();
+
+            boolean fantomeMort =
+                    labyrinthe.getPhantome() == null
+                            || !labyrinthe.getPhantome().estVivant();
+
+            if (monstreMort && fantomeMort) {
+                System.out.println("VICTOIRE !");
+                victoire = true;
+            }
+        }
     }
 
-    // vérifie si le héro est en vie
+    //
+
     public boolean etreFini() {
-        return !hero.estVivant();
+        return victoire;
     }
 
     public Labyrinthe getLabyrinthe() {

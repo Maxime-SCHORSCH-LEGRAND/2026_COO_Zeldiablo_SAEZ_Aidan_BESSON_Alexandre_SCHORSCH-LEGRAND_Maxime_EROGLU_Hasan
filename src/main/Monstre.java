@@ -45,8 +45,8 @@ public class Monstre extends Personnage {
 
         int startX = pos.x;
         int startY = pos.y;
-        int targetX = Hero.getPos().x;
-        int targetY = Hero.getPos().y;
+        int targetX = labyrinthe.getHero().getPos().x;
+        int targetY = labyrinthe.getHero().getPos().y;
 
         if (startX != targetX || startY != targetY) {
             char[][] grille = labyrinthe.getGrille();
