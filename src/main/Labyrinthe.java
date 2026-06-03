@@ -5,6 +5,7 @@ import main.Hero;
 import java.io.*;
 import java.util.*;
 
+
 public class Labyrinthe {
 
     private final char[][] grille;
@@ -12,7 +13,12 @@ public class Labyrinthe {
     private Hero hero;
     private Monstre monstre;
     private Phantome phantome;
-    // créer le labyrinthe et le lit depuis un fichier donné
+
+    /**
+     * constructeur du Labyrinthe
+     * @param fichier
+     * @throws IOException
+     */
     public Labyrinthe(String fichier) throws IOException {
 
         List<String> lignes = new ArrayList<>();
@@ -53,30 +59,63 @@ public class Labyrinthe {
             }
         }
     }
-    // bloc les case pour tous personnages sauf le phantome
+
+    /**
+     * methode qui lit un point sur l'axe des abscisses et ordonnées et nous dit si la case est libre ou pas
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean estLibre(int x, int y) {
         return grille[y][x] != '#';
     }
-    //vérifie les cases pour savoir si le phantome peut y passer
+
+    /**
+     * methode qui lit un point sur l'axe des abscisses et ordonnées et nous dit si la case est libre
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean estLibrePhantome(int x, int y){
         return grille[y][x] != '@';
     }
 
+    /**
+     * methode qui renvoie la grille du Labyrinthe
+     * @return
+     */
     public char[][] getGrille() {
         return grille;
     }
 
+    /**
+     * methode qui renvoie le hero du Labyrinthe
+     * @return
+     */
     public Hero getHero() {
         return hero;
     }
 
+    /**
+     * methode qui renvoie le monstre du Labyrinth
+     * @return
+     */
     public Monstre getMonstre() {
         return monstre;
     }
 
+    /**
+     * methode qui renvoie le phantome du Labyrinthe
+     * @return
+     */
     public Phantome getPhantome(){
         return phantome;
     }
+
+    /**
+     * methode qui renvoie la sortie du Labyrinthe
+     * @return
+     */
     public Position getSortie() {
         return sortie;
     }
