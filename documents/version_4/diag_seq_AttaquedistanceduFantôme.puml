@@ -34,7 +34,7 @@ alt memeLigne == true OU memeColonne == true
     activate phantome
 
 
-    
+
     phantome -> hero : getPos()
     activate hero
     hero --> phantome : Position
