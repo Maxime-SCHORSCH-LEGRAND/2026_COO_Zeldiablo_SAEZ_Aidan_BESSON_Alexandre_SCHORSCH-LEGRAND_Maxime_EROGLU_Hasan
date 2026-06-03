@@ -5,8 +5,8 @@ autonumber
 
 title: Phantome
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+MainPerso -> JeuPerso: new JeuPerso(lab)
+JeuPerso --> Monstre: Authentication Response
 
 == Repetition ==
 

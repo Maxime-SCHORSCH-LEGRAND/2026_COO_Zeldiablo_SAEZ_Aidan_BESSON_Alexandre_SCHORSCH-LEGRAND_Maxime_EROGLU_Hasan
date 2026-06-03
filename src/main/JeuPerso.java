@@ -119,19 +119,14 @@ public class JeuPerso implements Jeu {
         if (c.espace) {
             hero.Charge(direction, labyrinthe, monstre);
         }
+
         Position sortie = labyrinthe.getSortie();
 
-        if (sortie != null
-                && hero.getPos().x == sortie.x
-                && hero.getPos().y == sortie.y) {
+        if (sortie != null && hero.getPos().x == sortie.x && hero.getPos().y == sortie.y) {
 
-            boolean monstreMort =
-                    labyrinthe.getMonstre() == null
-                            || !labyrinthe.getMonstre().estVivant();
+            boolean monstreMort = labyrinthe.getMonstre() == null || !labyrinthe.getMonstre().estVivant();
 
-            boolean fantomeMort =
-                    labyrinthe.getPhantome() == null
-                            || !labyrinthe.getPhantome().estVivant();
+            boolean fantomeMort = labyrinthe.getPhantome() == null || !labyrinthe.getPhantome().estVivant();
 
             if (monstreMort && fantomeMort) {
                 System.out.println("VICTOIRE !");
