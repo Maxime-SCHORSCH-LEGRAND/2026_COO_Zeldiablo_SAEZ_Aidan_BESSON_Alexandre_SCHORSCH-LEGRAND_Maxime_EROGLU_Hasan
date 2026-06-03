@@ -172,6 +172,11 @@ public class Monstre extends Personnage {
         }
     }
 
+    /**
+     * methode qui fait subir des degats au monstres
+     * @param coup
+     * @return
+     */
     public int subirDegatPhysique(int coup) {
         this.vie = Math.max(0, this.vie - coup);
         return this.vie;
