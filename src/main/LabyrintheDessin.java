@@ -64,6 +64,18 @@ public class LabyrintheDessin implements DessinJeu {
             );
         }
 
+        Phantome p= jeu.getPhantome();
+
+        if (p != null && p.estVivant()) {
+            g.setColor(Color.PINK);
+            g.fillOval(
+                    p.getPos().x * TAILLE,
+                    p.getPos().y * TAILLE,
+                    TAILLE,
+                    TAILLE
+            );
+        }
+
 
         if (jeu.getAnimTimer() > 0) {
 

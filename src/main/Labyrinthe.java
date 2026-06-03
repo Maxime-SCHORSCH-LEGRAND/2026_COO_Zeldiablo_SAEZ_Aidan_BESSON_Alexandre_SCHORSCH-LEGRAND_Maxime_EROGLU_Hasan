@@ -66,5 +66,9 @@ public class Labyrinthe {
         return monstre;
     }
 
+    public Phantome getPhantome(){
+        return phantome;
+    }
+
 
 }

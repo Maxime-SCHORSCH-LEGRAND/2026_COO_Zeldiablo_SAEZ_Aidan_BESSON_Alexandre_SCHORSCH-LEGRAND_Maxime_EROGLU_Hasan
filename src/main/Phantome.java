@@ -36,7 +36,7 @@ public class Phantome extends Personnage {
         int ty = pos.y + dy;
 
         if (cible.getPos().x == tx && cible.getPos().y == ty) {
-            cible.subirDegatMagique(this.sort);
+            cible.subirDegatMagique(sort);
             System.out.println("Touché Magique ! Vie cible : " + cible.getVie());
         } else {
             System.out.println("Attaque magique ratée !");
@@ -61,7 +61,7 @@ public class Phantome extends Personnage {
             pos.x = nx;
             pos.y = ny;
         }
-        cooldown = 8;
+        cooldown = 4;
     }
 
 }
