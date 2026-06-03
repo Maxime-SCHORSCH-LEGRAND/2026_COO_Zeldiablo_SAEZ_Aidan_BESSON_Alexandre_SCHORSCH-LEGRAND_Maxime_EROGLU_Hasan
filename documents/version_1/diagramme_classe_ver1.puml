@@ -17,7 +17,6 @@ abstract Personnage{
 }
 
 class Hero{
--pos: Position
 +Hero()
 +getPos(): Postion
 +deplacer()
@@ -39,30 +38,35 @@ class LabyrintheDessin{
 }
 
 interface DessinJeu{
-+dessiner((BufferedImage im)
++dessiner(BufferedImage im)
 }
 
 class JeuPerso{
 -labyrinthe: Labyrinthe
 -hero: Hero
--x: int=1
--y: int=1
 +JeuPerso(Labyrinthe labyrinthe)
 +evoluer(Commande c)
 +etreFini(): boolean
 +getLabyrinthe(): labyrinthe
 +getHero():  Hero
-+getX(): x
-+getY(): y
 }
 
-Hero --> Personnage
+class Position{
+-x: int
+-y: int
++getX(): int
++getY(): int
+}
+
+Hero --|> Personnage
 Personnage --> MainPerso
 Labyrinthe --> MainPerso
 
 JeuPerso..>Jeu
 LabyrintheDessin-->MainPerso
 JeuPerso-->MainPerso
+Position<--Personnage
+JeuPerso-->Hero
 
 DessinJeu<.. LabyrintheDessin
 
