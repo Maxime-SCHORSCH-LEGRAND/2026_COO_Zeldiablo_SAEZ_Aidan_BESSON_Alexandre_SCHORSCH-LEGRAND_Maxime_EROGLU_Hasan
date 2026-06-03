@@ -2,14 +2,10 @@ package main;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Random;
+
 
 public class Monstre extends Personnage {
-    private Monstre monstre;
-    private Position pos;
-    private Random random;
 
-    private int vie;
 
     private int cooldown = 0;
 
@@ -149,7 +145,7 @@ public class Monstre extends Personnage {
                 etapesDash++;
 
                 if (pos.x == hero.getPos().x && pos.y == hero.getPos().y) {
-                    hero.subirDegatPhysique(degatFixe,monstre);
+                    hero.subirDegatPhysique(degatFixe);
                     etatDash = 2;
                     cooldown = 0;
                 }
@@ -165,14 +161,11 @@ public class Monstre extends Personnage {
         }
     }
 
-    public int subirDegatPhysique(int coup,Personnage attaquant) {
+    public int subirDegatPhysique(int coup) {
         this.vie = Math.max(0, this.vie - coup);
         return this.vie;
     }
 
-    public int subirDegatMagique(int sort,Personnage attaquant ) {
-        this.cooldown+=sort/2;
-        return this.cooldown;
-    }
+
 
 }
