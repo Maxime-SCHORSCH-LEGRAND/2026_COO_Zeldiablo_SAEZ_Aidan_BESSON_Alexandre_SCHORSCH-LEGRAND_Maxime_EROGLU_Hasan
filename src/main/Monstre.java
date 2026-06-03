@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
-public class Monstre {
+public class Monstre extends Personnage {
 
     private Position pos;
     private Random random;
@@ -18,20 +18,16 @@ public class Monstre {
     private int dashX = 0;
     private int dashY = 0;
     private int etapesDash = 0;
-
+    // creer un nouveau monstre
     public Monstre(int x, int y, int vie) {
-        pos = new Position(x, y);
-        random = new Random();
-        this.vie = vie ;
+        super(x,y,vie);
     }
 
     public Position getPos() {
         return pos;
     }
 
-    public int getVie() {
-        return vie;
-    }
+
 
     public boolean estVivant() {
         return vie > 0;
@@ -167,12 +163,12 @@ public class Monstre {
         }
     }
 
-    public int subirDegatPhysique(int coup) {
+    public int subirDegatPhysique(int coup, Personnage attaquant){
         this.vie = Math.max(0, this.vie - coup);
         return this.vie;
     }
 
-    public int subirDegatMagique(int sort) {
+    public int subirDegatMagique(int sort,Personnage attaquant) {
         this.cooldown+=sort/2;
         return this.cooldown;
     }

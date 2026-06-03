@@ -40,7 +40,7 @@ public class JeuPerso implements Jeu {
 
         if (c.a) {
             if (!toucheAPressee) {
-                hero.alterModeAttaque(); // 👈 Mis à jour ici
+                hero.alterModeAttaque();
                 toucheAPressee = true;
             }
         } else {
@@ -120,7 +120,7 @@ public class JeuPerso implements Jeu {
         }
     }
 
-    @Override
+    // vérifie si le héro est en vie
     public boolean etreFini() {
         return !hero.estVivant();
     }

@@ -63,7 +63,7 @@ public class Hero extends Personnage {
         perdreVie(sort);
         return this.vie;
     }
-    // permet au héro de ce déplacer dans une direction de 3 case 
+    // permet au héro de ce déplacer dans une direction de 3 case
     public void Charge(int direction, Labyrinthe lab, Monstre monstre) {
         int dx = 0, dy = 0;
         switch (direction) {
