@@ -1,21 +1,13 @@
 # Fonctionnalités prévues version 1
 
-- fonctionnalité 1 : nom
-  - descriptif texte : [...]
+- fonctionnalité 1 : Déplacement et affichage du Héros
+  - descriptif texte : Le héros est créé dans le labyrinthe et le joueur peut le faire bouger à l'aide des commandes de direction. Le moteur graphique affiche le labyrinthe et le héros à l'écran.
   - critères de validation :
-    - critère 1 [...]
-    - critère 2 [...]
-  - responsables : [...]
-
-- fonctionnalité 2 : nom
-  - descriptif texte : [...]
-  - critères de validation :
-    - critère 1 [...]
-    - critère 2 [...]
-  - responsables : [...]
-
-[....]
+    - Le héros se déplace correctement d'une case à chaque pression de touche.
+    - Le héros ne peut pas traverser les murs du labyrinthe.
+  - responsables : Aidan, Alexandre, Maxime, Hasan
 
 # Bilan
 
 - Quelles fonctionnalités est validée ?
+  - Déplacement et affichage du Héros : Validée

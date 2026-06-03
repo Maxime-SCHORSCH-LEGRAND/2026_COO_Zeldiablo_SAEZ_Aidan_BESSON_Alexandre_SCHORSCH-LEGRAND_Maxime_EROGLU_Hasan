@@ -1,0 +1,28 @@
+# Fonctionnalités prévues version 3
+
+- fonctionnalité 1 : Déplacement du Fantôme
+  - descriptif texte : Ajout d'un nouvel ennemi, le fantôme, capable de se déplacer de manière aléatoire en ignorant les murs classiques, tout en restant dans les limites de la carte.
+  - critères de validation :
+    - Le fantôme traverse les cases de murs sans être bloqué.
+    - Le fantôme ne sort pas du labyrinthe.
+  - responsables : Aidan, Alexandre, Maxime, Hasan
+
+- fonctionnalité 2 : Charge (Esquive/Dash) du Héros
+  - descriptif texte : Le héros peut effectuer une charge rapide de trois cases consécutives dans sa direction en appuyant sur la barre espace.
+  - critères de validation :
+    - Le héros avance de 3 cases instantanément.
+  - responsables : Aidan, Alexandre, Maxime, Hasan
+
+- fonctionnalité 3 : Charge offensive du Monstre
+  - descriptif texte : Si le monstre repère le joueur à proximité (4 ou 5 cases) sur la même ligne ou colonne, il s'arrête puis fonce sur lui pour infliger des dégâts.
+  - critères de validation :
+    - Détection correcte de l'alignement avec le héros.
+    - Le monstre effectue son dash et inflige 5 dégâts au contact.
+  - responsables : Aidan, Alexandre, Maxime, Hasan
+
+# Bilan
+
+- Quelles fonctionnalités est validée ?
+  - Déplacement passe-muraille du Fantôme : Validée
+  - Charge (Esquive/Dash) du Héros : Validée
+  - Charge offensive du Monstre : Validée
