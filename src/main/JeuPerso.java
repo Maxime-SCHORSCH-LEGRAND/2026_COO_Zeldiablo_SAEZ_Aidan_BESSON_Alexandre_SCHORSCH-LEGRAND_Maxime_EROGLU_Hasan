@@ -125,7 +125,7 @@ public class JeuPerso implements Jeu {
     //
 
     public boolean etreFini() {
-        return victoire;
+        return hero.estMort();
     }
 
     public Labyrinthe getLabyrinthe() {

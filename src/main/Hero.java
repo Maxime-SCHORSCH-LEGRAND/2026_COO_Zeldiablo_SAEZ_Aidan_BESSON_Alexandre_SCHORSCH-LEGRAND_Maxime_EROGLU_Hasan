@@ -108,5 +108,8 @@ public class Hero extends Personnage {
             this.deplacer(caseSuivanteX, caseSuivanteY);
         }
     }
+    public boolean estMort() {
+        return this.vie <= 0;
+    }
 
 }
