@@ -10,7 +10,7 @@ public class Monstre extends Personnage {
     private int cooldownPostDash = 0;
 
     private int degatFixe = 5;
-    private int etatDash = 0; // 0: Normal, 1: Dash en cours, 2: Récupération
+    private int etatDash = 0;
     private int dashX = 0;
     private int dashY = 0;
     private int etapesDash = 0;
