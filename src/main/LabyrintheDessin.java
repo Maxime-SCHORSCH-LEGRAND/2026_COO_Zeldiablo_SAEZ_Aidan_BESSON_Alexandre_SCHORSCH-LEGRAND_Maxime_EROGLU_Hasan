@@ -16,7 +16,10 @@ public class LabyrintheDessin implements DessinJeu {
         this.jeu = j;
     }
 
-    //creation de l'image du labyrinthe du héro et de l'attaque et des monstres
+    /**
+     * methode qui permet de "récupéré" le labyrinth et de le crée"
+     * @param image
+     */
     public void dessiner(BufferedImage image) {
 
         Graphics2D g = (Graphics2D) image.getGraphics();

@@ -5,9 +5,6 @@ import main.Hero;
 import java.io.*;
 import java.util.*;
 
-/**
- * cette class permet d'avoir et de crée le Labyrinthe , pour avoir accès a tout ce qu'il y a dans le Labirynthe 
- */
 public class Labyrinthe {
 
     private final char[][] grille;
