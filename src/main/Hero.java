@@ -2,10 +2,21 @@ package main;
 
 public class Hero extends Personnage {
 
-    private int degat = 5;
+    private int degatPhysique = 5;
+    private int degatMagique = 4;
+    private boolean modeMagique = false; // false = Physique, true = Magique
 
     public Hero(int x, int y, int vie) {
         super(x, y, 30);
+    }
+
+    public void alterModeAttaque() {
+        this.modeMagique = !this.modeMagique;
+        if (this.modeMagique) {
+            System.out.println(" Mode Magique activé.");
+        } else {
+            System.out.println(" Mode Physique activé.");
+        }
     }
 
     public void deplacer(int x, int y) {
@@ -13,39 +24,47 @@ public class Hero extends Personnage {
         pos.y = y;
     }
 
-    public void attaquer(Monstre monstre, int dx, int dy) {
-
-        if (monstre == null || !monstre.estVivant()) {
+    public void attaquer(Personnage cible, int dx, int dy) {
+        if (cible == null || !cible.estVivant()) {
             return;
         }
 
         int tx = pos.x + dx;
         int ty = pos.y + dy;
 
-        if (monstre.getPos().x == tx &&
-                monstre.getPos().y == ty) {
-
-            monstre.subirDegatPhysique(5);
-            System.out.println("Touché ! Vie monstre : " + monstre.getVie());
-
+        if (cible.getPos().x == tx && cible.getPos().y == ty) {
+            if (this.modeMagique) {
+                System.out.println("Le héros lance une décharge magique !");
+                cible.subirDegatMagique(degatMagique, this);
+            } else {
+                System.out.println("Le héros donne un coup de dague !");
+                cible.subirDegatPhysique(degatPhysique, this);
+            }
         } else {
             System.out.println("Attaque ratée !");
         }
     }
 
-
-    public void perdreVie(int degatFixe) {
-        vie -= degatFixe;
-        if (vie < 0) {
-            vie = 0;
+    public void perdreVie(int d) {
+        this.vie -= d;
+        if (this.vie < 0) {
+            this.vie = 0;
         }
-        System.out.println("Le héros a pris " + degatFixe + " dégâts ! Vie restante : " + this.vie);
+        System.out.println("Le héros a pris " + d + " dégâts ! Vie restante : " + this.vie);
+    }
+
+    public int subirDegatPhysique(int coup, Personnage attaquant) {
+        perdreVie(coup);
+        return this.vie;
+    }
+
+    public int subirDegatMagique(int sort, Personnage attaquant) {
+        perdreVie(sort);
+        return this.vie;
     }
 
     public void Charge(int direction, Labyrinthe lab, Monstre monstre) {
-        int dx = 0;
-        int dy = 0;
-
+        int dx = 0, dy = 0;
         switch (direction) {
             case 1: dx = -1; break;
             case 2: dx = 1;  break;
@@ -57,25 +76,11 @@ public class Hero extends Personnage {
             int caseSuivanteX = pos.x + dx;
             int caseSuivanteY = pos.y + dy;
 
-            if (!lab.estLibre(caseSuivanteX, caseSuivanteY)) {
+            if (!lab.estLibre(caseSuivanteX, caseSuivanteY)) break;
+            if (monstre != null && monstre.estVivant() && monstre.getPos().x == caseSuivanteX && monstre.getPos().y == caseSuivanteY) {
                 break;
-            }
-            if (monstre != null && monstre.estVivant()) {
-                if (monstre.getPos().x == caseSuivanteX && monstre.getPos().y == caseSuivanteY) {
-                    break;
-                }
             }
             this.deplacer(caseSuivanteX, caseSuivanteY);
         }
-    }
-
-    public int subirDegatPhysique(int coup) {
-        this.vie = Math.max(0, this.vie - coup);
-        System.out.println("Pv héro :"+this.vie);
-        return this.vie;
-    }
-
-    public int subirDegatMagique(int sort) {
-        return 1;
     }
 }

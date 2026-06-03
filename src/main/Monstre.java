@@ -109,6 +109,7 @@ public class Monstre {
 
         cooldown += 8;
     }
+
     public void Dash(Labyrinthe labyrinthe, Hero hero) {
         if (!estVivant()) return;
 
