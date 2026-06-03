@@ -13,9 +13,9 @@ public class Hero extends Personnage {
     public void alterModeAttaque() {
         this.modeMagique = !this.modeMagique;
         if (this.modeMagique) {
-            System.out.println("🔮 Mode Magique activé ! En avant les sorts !");
+            System.out.println(" Mode Magique activé ! En avant les sorts !");
         } else {
-            System.out.println("⚔️ Mode Physique activé ! Sortez les muscles !");
+            System.out.println(" Mode Physique activé ! Sortez les muscles !");
         }
     }
 

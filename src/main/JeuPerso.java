@@ -104,7 +104,6 @@ public class JeuPerso implements Jeu {
             }
         }
 
-        // Comportement du Fantôme
         if (phantome != null && phantome.estVivant()) {
             boolean memeLigne = phantome.getPos().y == hero.getPos().y;
             boolean memeColonne = phantome.getPos().x == hero.getPos().x;

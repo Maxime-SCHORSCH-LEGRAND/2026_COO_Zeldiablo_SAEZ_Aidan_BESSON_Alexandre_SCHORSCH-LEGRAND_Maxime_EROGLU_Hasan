@@ -6,7 +6,6 @@ public class Monstre extends Personnage {
 
     private Random random;
 
-    // Cooldowns distincts pour éviter les conflits dans la machine à états
     private int cooldownDeplacement = 0;
     private int cooldownPostDash = 0;
 
@@ -95,7 +94,7 @@ public class Monstre extends Personnage {
                 pos.x = nx;
                 pos.y = ny;
                 etapesDash++;
-                
+
                 if (pos.x == hero.getPos().x && pos.y == hero.getPos().y) {
                     hero.subirDegatPhysique(degatFixe, this);
                     etatDash = 2;
