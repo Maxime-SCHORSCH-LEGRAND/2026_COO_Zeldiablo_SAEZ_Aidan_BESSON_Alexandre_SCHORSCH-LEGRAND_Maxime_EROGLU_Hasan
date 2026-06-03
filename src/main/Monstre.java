@@ -1,5 +1,7 @@
 package main;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 
 public class Monstre {
@@ -38,7 +40,6 @@ public class Monstre {
 
 
     public void deplacer(Labyrinthe labyrinthe) {
-
         if (!estVivant()) return;
 
         if (cooldown > 0) {
@@ -46,26 +47,68 @@ public class Monstre {
             return;
         }
 
-        int[][] directions = {
-                {0,-1},
-                {0,1},
-                {-1,0},
-                {1,0}
-        };
+        int startX = pos.x;
+        int startY = pos.y;
+        int targetX = Hero.getPos().x;
+        int targetY = Hero.getPos().y;
 
-        int choix = random.nextInt(4);
+        if (startX != targetX || startY != targetY) {
+            char[][] grille = labyrinthe.getGrille();
+            int hauteur = grille.length;
+            int largeur = grille[0].length;
 
-        int nx = pos.x + directions[choix][0];
-        int ny = pos.y+ directions[choix][1];
+            Queue<Position> file = new LinkedList<>();
+            boolean[][] visite = new boolean[hauteur][largeur];
+            Position[][] parent = new Position[hauteur][largeur];
 
-        if (labyrinthe.estLibre(nx, ny)) {
-            pos.x =nx ;
-            pos.y = ny;
+            Position depart = new Position(startX, startY);
+            file.add(depart);
+            visite[startY][startX] = true;
+
+            int[][] dirs = {
+                    {0,-1},
+                    {0,1},
+                    {-1,0},
+                    {1,0}
+            };
+
+            boolean cibleTrouvee = false;
+
+            while (!file.isEmpty()) {
+                Position courante = file.poll();
+
+                if (courante.x == targetX && courante.y == targetY) {
+                    cibleTrouvee = true;
+                    break;
+                }
+
+                for (int[] d : dirs) {
+                    int nx = courante.x + d[0];
+                    int ny = courante.y + d[1];
+
+                    if (nx >= 0 && nx < largeur && ny >= 0 && ny < hauteur) {
+                        if (!visite[ny][nx] && labyrinthe.estLibre(nx, ny)) {
+                            visite[ny][nx] = true;
+                            Position voisin = new Position(nx, ny);
+                            parent[ny][nx] = courante;
+                            file.add(voisin);
+                        }
+                    }
+                }
+            }
+
+            if (cibleTrouvee && parent[targetY][targetX] != null) {
+                Position etape = new Position(targetX, targetY);
+                while (parent[etape.y][etape.x] != null && (parent[etape.y][etape.x].x != startX || parent[etape.y][etape.x].y != startY)) {
+                    etape = parent[etape.y][etape.x];
+                }
+                pos.x = etape.x;
+                pos.y = etape.y;
+            }
         }
 
         cooldown += 8;
     }
-
     public void Dash(Labyrinthe labyrinthe, Hero hero) {
         if (!estVivant()) return;
 
