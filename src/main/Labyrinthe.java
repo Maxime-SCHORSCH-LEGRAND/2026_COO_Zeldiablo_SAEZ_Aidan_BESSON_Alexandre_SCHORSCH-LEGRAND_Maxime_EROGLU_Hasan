@@ -12,7 +12,7 @@ public class Labyrinthe {
     private Hero hero;
     private Monstre monstre;
     private Phantome phantome;
-
+    // créer le labyrinthe et le lit depuis un fichier donné
     public Labyrinthe(String fichier) throws IOException {
 
         List<String> lignes = new ArrayList<>();
@@ -49,11 +49,11 @@ public class Labyrinthe {
             }
         }
     }
-
+    // bloc les case pour tous personnages sauf le phantome
     public boolean estLibre(int x, int y) {
         return grille[y][x] != '#';
     }
-
+    //vérifie les cases pour savoir si le phantome peut y passer
     public boolean estLibrePhantome(int x, int y){
         return grille[y][x] != '@';
     }
