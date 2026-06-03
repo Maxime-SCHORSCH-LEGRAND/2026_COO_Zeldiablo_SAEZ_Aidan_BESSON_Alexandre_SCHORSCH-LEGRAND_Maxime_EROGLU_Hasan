@@ -33,7 +33,7 @@ alt cooldown == 0
         phantome -> phantome : pos.x = nx \n pos.y = ny
     end
 
-    phantome -> phantome : cooldown = 4
+
 end
 
 jeu <-- phantome

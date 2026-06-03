@@ -33,11 +33,8 @@ alt memeLigne == true OU memeColonne == true
     jeu -> phantome : attaque(hero, heroX, heroY)
     activate phantome
 
-    phantome -> hero : estVivant()
-    activate hero
-    hero --> phantome : boolean (true)
-    deactivate hero
 
+    
     phantome -> hero : getPos()
     activate hero
     hero --> phantome : Position
