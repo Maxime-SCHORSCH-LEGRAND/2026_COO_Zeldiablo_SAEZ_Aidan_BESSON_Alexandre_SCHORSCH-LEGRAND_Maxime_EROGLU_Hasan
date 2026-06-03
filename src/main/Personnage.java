@@ -39,5 +39,8 @@ public abstract class Personnage {
      */
     public abstract int subirDegatPhysique(int coup);
 
-
+    public int getVie()
+    {
+        return this.vie;
+    }
 }
