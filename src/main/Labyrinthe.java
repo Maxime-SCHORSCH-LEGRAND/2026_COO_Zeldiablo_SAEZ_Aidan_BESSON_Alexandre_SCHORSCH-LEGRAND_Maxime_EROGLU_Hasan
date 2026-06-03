@@ -8,7 +8,7 @@ import java.util.*;
 public class Labyrinthe {
 
     private final char[][] grille;
-
+    private Position sortie;
     private Hero hero;
     private Monstre monstre;
     private Phantome phantome;
@@ -46,6 +46,10 @@ public class Labyrinthe {
                     phantome = new Phantome(x, y, 20);
                     grille[y][x] = '.';
                 }
+                if (c == 'S') {
+                    sortie = new Position(x, y);
+                    grille[y][x] = '.';
+                }
             }
         }
     }
@@ -72,6 +76,9 @@ public class Labyrinthe {
 
     public Phantome getPhantome(){
         return phantome;
+    }
+    public Position getSortie() {
+        return sortie;
     }
 
 
