@@ -5,7 +5,7 @@ import java.util.Queue;
 import java.util.Random;
 
 public class Monstre extends Personnage {
-
+    private Monstre monstre;
     private Position pos;
     private Random random;
 
@@ -149,7 +149,7 @@ public class Monstre extends Personnage {
                 etapesDash++;
 
                 if (pos.x == hero.getPos().x && pos.y == hero.getPos().y) {
-                    hero.subirDegatPhysique(degatFixe);
+                    hero.subirDegatPhysique(degatFixe,monstre);
                     etatDash = 2;
                     cooldown = 0;
                 }
