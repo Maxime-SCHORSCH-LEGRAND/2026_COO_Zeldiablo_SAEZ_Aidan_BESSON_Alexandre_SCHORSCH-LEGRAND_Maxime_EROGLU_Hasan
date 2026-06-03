@@ -9,4 +9,3 @@ JeuPerso -> Hero : charger(labyrinthe, dx, dy)
     Labyrinthe --> Hero : true
     Hero -> Hero : deplacer(nx, ny)
   end
-Hero --> JeuPerso
