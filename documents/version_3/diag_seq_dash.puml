@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+title dash du monstre
+participant mainPerso
+
+
+participant monstre
+participant personnage
+participant Labyrinthe
+
+
+
+
+
+mainPerso -> monstre : dash(degat:int)
+monstre -> Labyrinthe: check position monstre
+Labyrinthe --> monstre : cord:int
+personnage -> Labyrinthe: check position personnage
+Labyrinthe --> personnage : cord:int
+alt cordonnées monstre =/ cordonnées hero et différence de moins de 5
+monstre -> Labyrinthe: deplacer()
+Labyrinthe --> monstre : deplacement du monstre
+alt cordonnées monstre = cordonnées hero
+monstre -> personnage : subirDegat.(degat:int)
+personnage --> mainPerso : vie : int
+end
+end
+@enduml

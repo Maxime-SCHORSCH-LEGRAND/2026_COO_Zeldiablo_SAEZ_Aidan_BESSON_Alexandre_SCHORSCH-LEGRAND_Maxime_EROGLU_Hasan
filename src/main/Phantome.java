@@ -39,7 +39,6 @@ public class Phantome extends Personnage {
      * @param dy
      */
     public void attaque(Personnage cible, int dx, int dy){
-        if (cible == null || !cible.estVivant()) return;
 
         if (cible.getPos().x == dx && cible.getPos().y == dy) {
             cible.subirDegatPhysique(sort);
