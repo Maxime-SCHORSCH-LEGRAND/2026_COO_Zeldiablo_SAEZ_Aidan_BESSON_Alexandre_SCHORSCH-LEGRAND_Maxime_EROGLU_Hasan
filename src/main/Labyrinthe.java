@@ -54,6 +54,10 @@ public class Labyrinthe {
         return grille[y][x] != '#';
     }
 
+    public boolean estLibrePhantome(int x, int y){
+        return grille[y][x] != '@';
+    }
+
     public char[][] getGrille() {
         return grille;
     }
