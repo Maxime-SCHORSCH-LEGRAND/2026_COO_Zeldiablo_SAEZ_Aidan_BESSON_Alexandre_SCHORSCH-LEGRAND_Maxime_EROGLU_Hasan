@@ -44,7 +44,9 @@ public class Monstre extends Personnage {
             cooldown--;
             return;
         }
-
+        /**
+         * commencement , on enregistre les coordonées de début dans des variables startX et startY
+         */
         int startX = pos.x;
         int startY = pos.y;
         int targetX = labyrinthe.getHero().getPos().x;
@@ -55,6 +57,9 @@ public class Monstre extends Personnage {
             int hauteur = grille.length;
             int largeur = grille[0].length;
 
+            /**
+             *début belman-ford
+             */
             Queue<Position> file = new LinkedList<>();
             boolean[][] visite = new boolean[hauteur][largeur];
             Position[][] parent = new Position[hauteur][largeur];
@@ -63,6 +68,9 @@ public class Monstre extends Personnage {
             file.add(depart);
             visite[startY][startX] = true;
 
+            /**
+             * on indique ou sont les case potentielle a exploré par rapport au monstre
+             */
             int[][] dirs = {
                     {0,-1},
                     {0,1},
@@ -80,10 +88,14 @@ public class Monstre extends Personnage {
                     break;
                 }
 
+
+                /**
+                 * cette partie est la progression (ce que je n'aurai pas reussi a refaire ,
+                 * je sais ce que sait , je comprend comment ça marche mais je naurai pas le refaire actuelement
+                 */
                 for (int[] d : dirs) {
                     int nx = courante.x + d[0];
                     int ny = courante.y + d[1];
-
                     if (nx >= 0 && nx < largeur && ny >= 0 && ny < hauteur) {
                         if (!visite[ny][nx] && labyrinthe.estLibre(nx, ny)) {
                             visite[ny][nx] = true;
@@ -94,7 +106,9 @@ public class Monstre extends Personnage {
                     }
                 }
             }
-
+            /**
+             * partie compliqué  : tant que la partie actuelle a un parent , il devient son propre parent
+             */
             if (cibleTrouvee && parent[targetY][targetX] != null) {
                 Position etape = new Position(targetX, targetY);
                 while (parent[etape.y][etape.x] != null && (parent[etape.y][etape.x].x != startX || parent[etape.y][etape.x].y != startY)) {
