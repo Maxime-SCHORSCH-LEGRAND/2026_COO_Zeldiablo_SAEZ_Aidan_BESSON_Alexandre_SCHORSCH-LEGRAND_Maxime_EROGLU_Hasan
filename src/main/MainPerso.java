@@ -15,5 +15,5 @@ public class MainPerso {
         MoteurGraphique moteur = new MoteurGraphique(jeu, dessin);
 
         moteur.lancerJeu(800, 600);
-    }
+    }   
 }

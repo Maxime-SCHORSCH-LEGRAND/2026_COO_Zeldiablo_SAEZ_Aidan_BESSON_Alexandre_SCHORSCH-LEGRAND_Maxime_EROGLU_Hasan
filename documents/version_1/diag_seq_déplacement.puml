@@ -8,12 +8,15 @@ autonumber
 title déplacement
 autonumber
 
-Main -> JeuPerso: initialisation()
-JeuPerso -> Labyrinthe: creation()
+
+
+MainPerso -> Labyrinthe: creation(fichier.txt)
+MainPerso-> JeuPerso:evoluer(commande)
 Joueur -> JeuPerso: Touche ZQSD
-JeuPerso->Hero:déplacer()
-
-
+JeuPerso->Hero:déplacer(int x , int y)
+Hero --> JeuPerso:
+JeuPerso-->MainPerso:
+Labyrinthe-->MainPerso:
 
 
 
