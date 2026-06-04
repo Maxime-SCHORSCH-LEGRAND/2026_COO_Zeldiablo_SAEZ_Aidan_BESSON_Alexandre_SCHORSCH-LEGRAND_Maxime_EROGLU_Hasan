@@ -1,21 +1,21 @@
 # Fonctionnalités prévues version 2
 
-- fonctionnalité 1 : nom
-  - descriptif texte : [...]
+- fonctionnalité 1 : Mouvement du Monstre
+  - descriptif texte : Un monstre est ajouté au labyrinthe. Il se déplace de manière autonome et aléatoire sur la grille.
   - critères de validation :
-    - critère 1 [...]
-    - critère 2 [...]
-  - responsables : [...]
+    - Le monstre se déplace sans intervention du joueur.
+    - Le monstre respecte les collisions et ne traverse pas les murs.
+  - responsables : Aidan, Alexandre, Maxime, Hasan
 
-- fonctionnalité 2 : nom
-  - descriptif texte : [...]
+- fonctionnalité 2 : Système de combat de base
+  - descriptif texte : Le héros peut attaquer le monstre. Les entités possèdent des points de vie (PV) et peuvent subir des dégâts jusqu'à la mort.
   - critères de validation :
-    - critère 1 [...]
-    - critère 2 [...]
-  - responsables : [...]
-
-[....]
+    - Le monstre perd des points de vie lorsqu'il est frappé.
+    - Le monstre meurt et disparaît lorsque ses PV tombent à 0 ou moins.
+  - responsables : Aidan, Alexandre, Maxime, Hasan
 
 # Bilan
 
 - Quelles fonctionnalités est validée ?
+  - Mouvement du Monstre : Validée
+  - Système de combat de base : Validée

@@ -12,9 +12,10 @@ Joueur -> JeuPerso : appuie F / T / G / H
 
 JeuPerso -> Hero : attaquer(monstre, direction)
 
-Hero -> Hero : calcul case cible (FTGH)
+JeuPerso -> JeuPerso : Trouver Cible  (int x , int x)
 
-Hero -> Monstre : vérifier position
+JeuPerso -> Monstre : vérifier position
+
 
 alt monstre sur case ciblée
     Hero -> Monstre : subirdegat(dégâts)

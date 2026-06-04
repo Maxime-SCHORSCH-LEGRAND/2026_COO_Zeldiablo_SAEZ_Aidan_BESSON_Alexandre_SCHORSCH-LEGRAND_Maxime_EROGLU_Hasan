@@ -1,0 +1,22 @@
+# Fonctionnalités prévues version 4
+
+- fonctionnalité 1 : Attaque à distance du Fantôme
+  - descriptif texte : Le fantôme peut attaquer le héros à distance s'ils se retrouvent alignés sur la même ligne ou la même colonne.
+  - critères de validation :
+    - Le fantôme vérifie son alignement (X ou Y) avec le héros à chaque tour.
+    - Les dégâts sont infligés au héros si l'alignement est confirmé.
+  - responsables : Aidan, Alexandre, Maxime, Hasan
+
+- fonctionnalité 2 : Porte de sortie et Condition de Victoire
+  - descriptif texte : Une porte de sortie (S) est présente dans le labyrinthe. Le jeu se termine par une victoire si le joueur l'atteint après avoir éliminé toutes les menaces.
+  - critères de validation :
+    - Le héros doit se trouver sur les coordonnées de la porte de sortie.
+    - Le monstre et le fantôme doivent avoir 0 point de vie.
+    - L'événement de victoire se déclenche correctement.
+  - responsables : Aidan, Alexandre, Maxime, Hasan
+
+# Bilan
+
+- Quelles fonctionnalités est validée ?
+  - Attaque à distance (Sniper) du Fantôme : Validée
+  - Porte de sortie et Condition de Victoire : Validée

@@ -1,130 +1,127 @@
 @startuml
-'https://plantuml.com/class-diagram
+skinparam linetype ortho
+skinparam nodesep 70
+skinparam ranksep 90
+skinparam classAttributeIconSize 0
 
-class MainPerso
 
-interface Jeu{
-+evoluer(Commande commandeUser)
-+etreFini(): boolean
+interface Jeu {
+  +evoluer(Commande c)
+  +etreFini(): boolean
 }
 
-class Monstre{
--cooldown: int
--degatFixe: int
--etatDash: int
--dashX: int
--dashY: int
--etapesDash: int
-+Monstre(int x , int y , int vie)
-+getPos(): Position
-+deplacer(Labyrinthe labyrinthe)
-+Dash(Labyrinthe labyrinthe, Hero hero)
-+subirDegatPhysique(int coup): int
+interface DessinJeu {
+  +dessiner(BufferedImage im)
 }
 
-class Phantome{
--{static} sort: int
--random: Random
--cooldown: int
-+Phantome(int x, int y, int vie)
-+attaque(Personnage cible, int dx, int dy)
-+deplacer(Labyrinthe labyrinthe)
-+subirDegatPhysique(int coup): int
+
+class MainPerso {
+  +main(String[] args)
 }
 
-abstract Personnage{
-#pos: Position
-#vie: int
-+Personnage(int x, int y, int vie)
-+getPos(): Position
-+estVivant(): boolean
-+{abstract} subirDegatPhysique(int coup): int
+'
+class LabyrintheDessin {
+  -{static} TAILLE: int
+  +dessiner(BufferedImage image)
 }
 
-class Hero{
--degatPhysique: int
--degatMagique: int
--modeMagique: boolean
-+Hero(int x , int y , int vie)
-+alterModeAttaque()
-+deplacer(int x , int y)
-+attaquer(Personnage cible, int dx, int dy)
-+perdreVie(int d)
-+subirDegatPhysique(int coup): int
-+Charge(int direction, Labyrinthe lab, Monstre monstre)
-+estMort(): boolean
+class JeuPerso {
+  -direction: int
+  -animX: int
+  -animY: int
+  -animTimer: int
+  +evoluer(Commande c)
+  +etreFini(): boolean
+  +trouverCible(x,y): Personnage
+  +getLabyrinthe(): Labyrinthe
+  +getHero(): Hero
+  +getMonstre(): Monstre
+  +getPhantome(): Phantome
 }
 
-class Labyrinthe{
--grille: char[][]
--sortie: Position
--hero: Hero
--monstre: Monstre
--phantome: Phantome
-+Labyrinthe(String fichier)
-+estLibre(int x, int y): boolean
-+estLibrePhantome(int x, int y): boolean
-+getGrille(): char[][]
-+getHero(): Hero
-+getMonstre(): Monstre
-+getPhantome(): Phantome
-+getSortie(): Position
+class Labyrinthe {
+  -grille: char[][]
+  +estLibre(x,y): boolean
+  +estLibrePhantome(x,y): boolean
+  +getGrille(): char[][]
+  +getHero(): Hero
+  +getMonstre(): Monstre
+  +getPhantome(): Phantome
+  +getSortie(): Position
 }
 
-class LabyrintheDessin{
--jeu: JeuPerso
-+LabyrintheDessin(JeuPerso j)
-+dessiner(BufferedImage image)
+
+class Hero {
+  -degatPhysique: int
+  +deplacer(x, y)
+  +attaquer(cible, dx, dy)
+  +perdreVie(int d)
+  +subirDegatPhysique(int coup): int
+  +Charge(dir, lab, monstre)
+  +estMort(): boolean
 }
 
-interface DessinJeu{
-+dessiner(BufferedImage im)
+class Monstre {
+  -cooldown: int
+  -degatFixe: int
+  -etatDash: int
+  -dashX: int
+  -dashY: int
+  -etapesDash: int
+  +deplacer(Labyrinthe)
+  +Dash(Labyrinthe, Hero)
+  +subirDegatPhysique(int coup): int
 }
 
-class JeuPerso{
--labyrinthe: Labyrinthe
--hero: Hero
--monstre: Monstre
--phantome: Phantome
--direction: int
--animX: int
--animY: int
--animTimer: int
--victoire: boolean
-+JeuPerso(Labyrinthe labyrinthe)
--trouverCible(int x, int y): Personnage
-+evoluer(Commande c)
-+etreFini(): boolean
-+getLabyrinthe(): Labyrinthe
-+getHero(): Hero
-+getMonstre(): Monstre
-+getPhantome(): Phantome
-+getAnimX(): int
-+getAnimY(): int
-+getAnimTimer(): int
+class Phantome {
+  -{static} sort: int
+  -random: Random
+  -cooldown: int
+  +attaque(cible, dx, dy)
+  +deplacer(Labyrinthe)
+  +subirDegatPhysique(int coup): int
 }
 
-class Position{
-+x: int
-+y: int
-+Position(int x, int y)
-+getX(): int
-+getY(): int
+abstract class Personnage {
+  #vie: int
+  +getPos(): Position
+  +getVie(): int
+  +estVivant(): boolean
+  +{abstract} subirDegatPhysique(int coup): int
 }
 
-Hero --|> Personnage
-Monstre--|> Personnage
-Phantome --|> Personnage
-Personnage --> MainPerso
-Labyrinthe --> MainPerso
+class Position {
+  +x: int
+  +y: int
+}
 
-Position<--Personnage
-JeuPerso-->Hero
+' ── Implémentations ──
+JeuPerso ..|> Jeu
+LabyrintheDessin ..|> DessinJeu
 
-JeuPerso..>Jeu
-LabyrintheDessin-->MainPerso
-JeuPerso-->MainPerso
+' ── Hiérarchie principale (Main vers Moteurs) ──
+MainPerso -down-> LabyrintheDessin
+MainPerso -down-> JeuPerso
+MainPerso -down-> Labyrinthe
 
-DessinJeu<.. LabyrintheDessin
+LabyrintheDessin -right-> JeuPerso : -jeu
+JeuPerso -right-> Labyrinthe : -labyrinthe
+
+' ── Liaisons vers les acteurs (Vers le bas) ──
+JeuPerso -down-> Hero : -hero
+JeuPerso -down-> Monstre : -monstre
+JeuPerso -down-> Phantome : -phantome
+
+Labyrinthe -down-> Hero : -hero
+Labyrinthe -down-> Monstre : -monstre
+Labyrinthe -down-> Phantome : -phantome
+Labyrinthe -down-> Position : -sortie
+
+' ── Héritage (Acteurs vers Personnage en bas) ──
+Hero -down-|> Personnage
+Monstre -down-|> Personnage
+Phantome -down-|> Personnage
+
+Personnage -right-> Position : #pos
 
 @enduml

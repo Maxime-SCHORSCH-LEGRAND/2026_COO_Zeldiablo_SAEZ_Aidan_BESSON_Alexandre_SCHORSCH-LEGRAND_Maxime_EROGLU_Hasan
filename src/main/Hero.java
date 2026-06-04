@@ -3,8 +3,7 @@ package main;
 public class Hero extends Personnage {
 
     private int degatPhysique = 5;
-    private int degatMagique = 4;
-    private boolean modeMagique = false; // false = Physique, true = Magique
+
 
     /**
 
@@ -15,14 +14,6 @@ public class Hero extends Personnage {
     public Hero(int x, int y, int vie) {
         super(x, y, 30);}
 
-    /**
-
-    permet de chnger de type d'attaque entre magique pour frapper le phantome et physique pour le monstre de base*/
-    public void alterModeAttaque() {
-        this.modeMagique = !this.modeMagique;
-        if (this.modeMagique) {
-            System.out.println(" Mode Magique activé.");} else {
-            System.out.println(" Mode Physique activé.");}}
 
     /**
 
@@ -37,7 +28,7 @@ public class Hero extends Personnage {
 
     /**
 
-    attaque selon le mode choisi (entre magique et physique)
+    attaque
     @param cible
     @param dx
     @param dy*/
@@ -49,13 +40,8 @@ public class Hero extends Personnage {
         int ty = pos.y + dy;
 
         if (cible.getPos().x == tx && cible.getPos().y == ty) {
-            if (this.modeMagique==true) {
-                System.out.println("Le héros lance une décharge magique !");
-                cible.subirDegatPhysique(degatMagique);
-            } else {
                 System.out.println("Le héros donne un coup de dague !");
                 cible.subirDegatPhysique(degatPhysique);
-            }
         } else {
             System.out.println("Attaque ratée !");
         }
